@@ -42,7 +42,7 @@ services:
     volumes:
       - dest_pg_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5434:5432"
     networks:
       - airbyte_net
     healthcheck:
@@ -56,6 +56,7 @@ services:
     image: mysql:8.0
     container_name: hso_dest_mysql
     restart: unless-stopped
+    command: --local-infile=1
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
       MYSQL_DATABASE: ${DEST_MYSQL_DB:-destdb}
@@ -63,6 +64,7 @@ services:
       MYSQL_PASSWORD: ${DEST_MYSQL_PASSWORD:-destpassword}
     volumes:
       - dest_mysql_data:/var/lib/mysql
+      - ./sql/dest-mysql:/docker-entrypoint-initdb.d:ro
     ports:
       - "3306:3306"
     networks:
@@ -73,7 +75,40 @@ services:
       timeout: 5s
       retries: 5
 
+  # --- FILE SERVER: CSV-Flatfiles fuer Airbyte File Connector -----------------
+  # Doppelter Zweck:
+  #   1. HTTP-Browsing der Dateien: http://localhost:8888/
+  #   2. Kopiert CSVs beim Start in oss_local_root (/local/) damit
+  #      der Airbyte File-Connector sie ueber Storage Provider "local" lesen kann.
+  #      Hinweis: oss_local_root muss existieren (d.h. Airbyte via abctl installiert).
+  file-server:
+    image: nginx:alpine
+    container_name: hso_fileserver
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "-c",
+      "cp /data/*.csv /local/ 2>/dev/null && echo '[file-server] CSVs in oss_local_root kopiert' || echo '[file-server] oss_local_root nicht beschreibbar - uebersprungen'; nginx -g 'daemon off;'"
+    ]
+    volumes:
+      - ./sql/source/data:/usr/share/nginx/html:ro
+      - ./sql/source/data:/data:ro
+      - ./docker/fileserver/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - oss_local_root:/local
+    ports:
+      - "8888:80"
+    networks:
+      - airbyte_net
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/k_plz.csv"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
 volumes:
   source_pg_data:
   dest_pg_data:
   dest_mysql_data:
+  # Externes Volume von Airbyte (abctl) - wird beim ersten Start von setup-airbyte.ps1 erstellt.
+  # Muss existieren bevor docker compose up aufgerufen wird.
+  # Falls nicht vorhanden: file-server startet trotzdem, Copy-Schritt wird uebersprungen.
+  oss_local_root:
+    external: true
