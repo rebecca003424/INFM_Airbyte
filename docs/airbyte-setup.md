@@ -68,14 +68,14 @@ Standard-Login: `airbyte / password`
 
 | Feld | Wert |
 |------|------|
-| Host | `hso_source_postgres` (Container-Name) |
-| Port | `5432` |
+| Host | `host.docker.internal` |
+| Port | `5433` |
 | Database | `sourcedb` |
 | Username | `sourceuser` |
 | Password | `sourcepassword` |
 | SSL | Disabled |
 
-> **Warum Container-Name?** Airbyte läuft im gleichen Docker-Netzwerk (`airbyte_net`), daher ist der Container-Name direkt erreichbar – kein `localhost` nötig.
+> **Warum `host.docker.internal`?** Airbyte spawnt Connector-Container dynamisch. Diese können nicht direkt auf Container-Namen im `airbyte_net` zugreifen, aber `host.docker.internal` löst immer zur Host-IP auf. Die DBs sind auf Host-Ports exponiert (5433/5432/3306).
 
 ---
 
@@ -85,7 +85,7 @@ Standard-Login: `airbyte / password`
 
 | Feld | Wert |
 |------|------|
-| Host | `hso_dest_postgres` |
+| Host | `host.docker.internal` |
 | Port | `5432` |
 | Database | `destdb` |
 | Username | `destuser` |
@@ -95,7 +95,7 @@ Standard-Login: `airbyte / password`
 
 | Feld | Wert |
 |------|------|
-| Host | `hso_dest_mysql` |
+| Host | `host.docker.internal` |
 | Port | `3306` |
 | Database | `destdb` |
 | Username | `destuser` |

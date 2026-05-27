@@ -1,50 +1,66 @@
-# setup-airbyte.ps1 – Airbyte herunterladen, konfigurieren und starten
+# setup-airbyte.ps1 - Airbyte herunterladen, konfigurieren und starten
 # Aufruf: .\scripts\setup-airbyte.ps1
 #
 # Was dieses Skript tut:
-#   1. Prüft ob das airbyte_net-Netzwerk existiert
-#   2. Lädt die offizielle Airbyte docker-compose.yaml herunter
-#   3. Ergänzt das airbyte_net-Netzwerk in der Compose-Datei
+#   1. Prueft ob das airbyte_net-Netzwerk existiert (install.ps1 muss zuerst laufen)
+#   2. Laedt docker-compose.yaml UND .env von Airbyte GitHub herunter
+#   3. Erstellt docker-compose.override.yaml fuer die airbyte_net-Einbindung
 #   4. Startet Airbyte
 #   5. Wartet bis die UI erreichbar ist
 
 $ErrorActionPreference = "Stop"
 
-$AIRBYTE_DIR  = "C:\tools\airbyte"
-$AIRBYTE_VER  = "1.3.1"   # Aktuelle stabile Version – ggf. auf https://github.com/airbytehq/airbyte/releases prüfen
-$COMPOSE_URL  = "https://raw.githubusercontent.com/airbytehq/airbyte/v$AIRBYTE_VER/docker-compose.yaml"
-$COMPOSE_FILE = "$AIRBYTE_DIR\docker-compose.yaml"
-$ENV_FILE     = "$AIRBYTE_DIR\.env"
+$AIRBYTE_DIR   = "C:\tools\airbyte"
+$COMPOSE_FILE  = "$AIRBYTE_DIR\docker-compose.yaml"
+$OVERRIDE_FILE = "$AIRBYTE_DIR\docker-compose.override.yaml"
+$ENV_FILE      = "$AIRBYTE_DIR\.env"
 
-# ─── Hilfsfunktionen ─────────────────────────────────────────────────────────
+# Airbyte hat docker-compose ins Repo airbyte-platform ausgelagert und
+# bei v0.63.13 eingefroren (docker-compose wird durch abctl abgeloest).
+# Quelle: run-ab-platform.sh in airbytehq/airbyte
+$AIRBYTE_VER = "0.63.13"
+$BASE_URL    = "https://raw.githubusercontent.com/airbytehq/airbyte-platform/v$AIRBYTE_VER"
+
+# --- Hilfsfunktionen ---------------------------------------------------------
 
 function Write-Step([string]$msg) { Write-Host "`n==> $msg" -ForegroundColor Cyan }
 function Write-Ok([string]$msg)   { Write-Host "    [OK] $msg" -ForegroundColor Green }
 function Write-Warn([string]$msg) { Write-Host "    [!]  $msg" -ForegroundColor Yellow }
 function Write-Fail([string]$msg) { Write-Host "    [X]  $msg" -ForegroundColor Red }
 
-# ─── Banner ──────────────────────────────────────────────────────────────────
+function Download-File([string]$url, [string]$dest) {
+    try {
+        Invoke-WebRequest -Uri $url -OutFile $dest -UseBasicParsing
+        return $true
+    } catch {
+        Write-Fail "Download fehlgeschlagen ($url): $_"
+        return $false
+    }
+}
+
+# --- Banner ------------------------------------------------------------------
 
 Write-Host ""
-Write-Host "  Airbyte Setup – Campus Next-Gen Data-Hub" -ForegroundColor White
+Write-Host "  Airbyte Setup - Campus Next-Gen Data-Hub" -ForegroundColor White
 Write-Host "  ==========================================" -ForegroundColor DarkGray
 Write-Host ""
 
-# ─── 1. Netzwerk prüfen ──────────────────────────────────────────────────────
+# --- 1. Netzwerk pruefen -----------------------------------------------------
 
-Write-Step "Prüfe airbyte_net Netzwerk"
+Write-Step "Pruefe airbyte_net Netzwerk"
 
-$netExists = docker network ls --filter "name=airbyte_net" --format "{{.Name}}" 2>$null
-if ($netExists -ne "airbyte_net") {
-    Write-Warn "airbyte_net existiert noch nicht – wird durch 'docker compose up' erstellt."
-    Write-Warn "Bitte zuerst .\scripts\install.ps1 ausführen!"
+# docker network ls --filter macht Substring-Matching, daher exakt in der Ausgabe pruefen
+$networks = docker network ls --format "{{.Name}}" 2>$null
+if ($networks -notcontains "airbyte_net") {
+    Write-Warn "airbyte_net existiert noch nicht."
+    Write-Warn "Bitte zuerst .\scripts\install.ps1 ausfuehren, dann dieses Skript erneut starten."
     $answer = Read-Host "Trotzdem fortfahren? (j/N)"
     if ($answer -notin @("j","J","y","Y")) { exit 0 }
 } else {
     Write-Ok "airbyte_net Netzwerk gefunden."
 }
 
-# ─── 2. Airbyte-Verzeichnis ──────────────────────────────────────────────────
+# --- 2. Airbyte-Verzeichnis --------------------------------------------------
 
 Write-Step "Airbyte-Verzeichnis vorbereiten: $AIRBYTE_DIR"
 
@@ -55,84 +71,102 @@ if (-not (Test-Path $AIRBYTE_DIR)) {
     Write-Ok "Verzeichnis existiert bereits."
 }
 
-# ─── 3. docker-compose.yaml herunterladen ────────────────────────────────────
+# --- 3. Alle Airbyte-Dateien herunterladen -----------------------------------
+# Airbyte benoetigt neben docker-compose.yaml noch .env, flags.yml und
+# die Temporal-Konfiguration. Ohne diese Dateien schlaegt der Start fehl.
 
-Write-Step "Lade Airbyte docker-compose.yaml (v$AIRBYTE_VER)"
+Write-Step "Lade Airbyte-Dateien herunter (v$AIRBYTE_VER)"
+
+$filesToDownload = @(
+    @{ Src = "docker-compose.yaml";                        Dst = "$AIRBYTE_DIR\docker-compose.yaml" },
+    @{ Src = ".env";                                       Dst = "$AIRBYTE_DIR\.env"                },
+    @{ Src = "flags.yml";                                  Dst = "$AIRBYTE_DIR\flags.yml"           },
+    @{ Src = "temporal/dynamicconfig/development.yaml";    Dst = "$AIRBYTE_DIR\temporal\dynamicconfig\development.yaml" }
+)
 
 if (Test-Path $COMPOSE_FILE) {
-    Write-Warn "docker-compose.yaml existiert bereits. Überspringe Download."
-    Write-Warn "Zum Neustart löschen: Remove-Item '$COMPOSE_FILE'"
+    Write-Warn "docker-compose.yaml existiert bereits - ueberspringe alle Downloads."
+    Write-Warn "Neu herunterladen: Remove-Item -Recurse '$AIRBYTE_DIR' und Skript erneut starten."
 } else {
-    try {
-        Invoke-WebRequest -Uri $COMPOSE_URL -OutFile $COMPOSE_FILE -UseBasicParsing
-        Write-Ok "docker-compose.yaml heruntergeladen."
-    } catch {
-        Write-Fail "Download fehlgeschlagen: $_"
+    $anyFailed = $false
+    foreach ($file in $filesToDownload) {
+        $dir = Split-Path $file.Dst -Parent
+        if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null }
+
+        $ok = Download-File "$BASE_URL/$($file.Src)" $file.Dst
+        if ($ok) {
+            Write-Ok "$($file.Src)"
+        } else {
+            $anyFailed = $true
+        }
+    }
+    if ($anyFailed) {
         Write-Host ""
-        Write-Host "  Manuell herunterladen:" -ForegroundColor Yellow
-        Write-Host "  1. https://github.com/airbytehq/airbyte/releases/tag/v$AIRBYTE_VER" -ForegroundColor Gray
-        Write-Host "  2. Source code (zip) herunterladen und entpacken" -ForegroundColor Gray
-        Write-Host "  3. docker-compose.yaml nach $AIRBYTE_DIR kopieren" -ForegroundColor Gray
+        Write-Host "  Manueller Download:" -ForegroundColor Yellow
+        Write-Host "  1. https://github.com/airbytehq/airbyte-platform/releases/tag/v$AIRBYTE_VER" -ForegroundColor Gray
+        Write-Host "  2. Source code (zip) herunterladen und nach $AIRBYTE_DIR entpacken" -ForegroundColor Gray
         exit 1
     }
 }
 
-# ─── 4. airbyte_net in docker-compose.yaml eintragen ─────────────────────────
+# --- 5. Override-Datei fuer airbyte_net erstellen ----------------------------
+# Statt die heruntergeladene docker-compose.yaml zu patchen, verwenden wir
+# docker-compose.override.yaml. Docker Compose liest diese automatisch ein
+# und merged sie mit der Haupt-Datei - so bleibt docker-compose.yaml sauber.
 
-Write-Step "Konfiguriere airbyte_net Netzwerk in Airbyte-Compose"
+Write-Step "Erstelle docker-compose.override.yaml fuer airbyte_net"
 
-$content = Get-Content $COMPOSE_FILE -Raw
-
-# Prüfen ob airbyte_net schon eingetragen ist
-if ($content -match "airbyte_net") {
-    Write-Ok "airbyte_net bereits eingetragen – überspringe."
-} else {
-    # Netzwerk-Deklaration am Ende der networks-Sektion hinzufügen
-    $networkBlock = @"
-
-  airbyte_net:
-    external: true
+$overrideContent = @"
+# Airbyte connector containers greifen auf die Custom-DBs ueber
+# host.docker.internal zu (nicht ueber Container-Namen), weil die
+# Connector-Container dynamisch gespawnt werden und nicht automatisch
+# im airbyte_net landen. host.docker.internal loest auf Windows
+# Docker Desktop immer zur Host-IP auf.
+#
+# DB-Verbindung in Airbyte daher mit:
+#   Host: host.docker.internal
+#   Port: 5433 (Source PG) / 5432 (Dest PG) / 3306 (Dest MySQL)
 "@
 
-    # Am Ende der Datei unter 'networks:' eintragen
-    if ($content -match "(?s)(^networks:.*?)(\n\w|\z)") {
-        $content = $content -replace "(^networks:[\s\S]*?)(\n[a-z]|\z)", "`$1$networkBlock`$2"
-        Set-Content -Path $COMPOSE_FILE -Value $content -NoNewline
-        Write-Ok "airbyte_net zur networks-Sektion hinzugefügt."
-    } else {
-        # Einfach ans Ende anhängen
-        Add-Content -Path $COMPOSE_FILE -Value "`nnetworks:`n  airbyte_net:`n    external: true"
-        Write-Ok "airbyte_net ans Ende der Datei hinzugefügt."
-    }
-}
+Set-Content -Path $OVERRIDE_FILE -Value $overrideContent
+Write-Ok "docker-compose.override.yaml erstellt."
 
-# ─── 5. Airbyte .env erstellen ───────────────────────────────────────────────
+# --- 5b. Login-Credentials setzen --------------------------------------------
+# BASIC_AUTH_USERNAME und BASIC_AUTH_PASSWORD stehen in C:\tools\airbyte\.env.
+# Standard: airbyte / password - das sollte fuer lokale Entwicklung geaendert werden.
 
-Write-Step "Airbyte .env prüfen"
+Write-Step "Airbyte Login-Credentials konfigurieren"
 
-if (-not (Test-Path $ENV_FILE)) {
-    # Minimale .env für Airbyte erstellen
-    @"
-# Airbyte Konfiguration
-AIRBYTE_VERSION=$AIRBYTE_VER
-API_URL=/api/v1/
-TRACKING_STRATEGY=logging
-AIRBYTE_ROLE=
-"@ | Set-Content -Path $ENV_FILE
-    Write-Ok ".env erstellt."
-} else {
-    Write-Ok ".env existiert bereits."
-}
+$envContent = Get-Content $ENV_FILE -Raw
 
-# ─── 6. Airbyte starten ──────────────────────────────────────────────────────
+$currentUser = if ($envContent -match 'BASIC_AUTH_USERNAME=(.+)') { $Matches[1].Trim() } else { "airbyte" }
+$currentPass = if ($envContent -match 'BASIC_AUTH_PASSWORD=(.+)') { $Matches[1].Trim() } else { "password" }
 
-Write-Step "Airbyte starten (dauert ~3-5 Minuten)"
+Write-Host "    Aktuell: $currentUser / $currentPass" -ForegroundColor DarkGray
+Write-Host "    Eingabe leer lassen = Standardwert behalten." -ForegroundColor DarkGray
+Write-Host ""
+
+$newUser = Read-Host "    Benutzername [$currentUser]"
+$newPass = Read-Host "    Passwort    [$currentPass]"
+
+if ([string]::IsNullOrWhiteSpace($newUser)) { $newUser = $currentUser }
+if ([string]::IsNullOrWhiteSpace($newPass)) { $newPass = $currentPass }
+
+$envContent = $envContent -replace 'BASIC_AUTH_USERNAME=.+', "BASIC_AUTH_USERNAME=$newUser"
+$envContent = $envContent -replace 'BASIC_AUTH_PASSWORD=.+', "BASIC_AUTH_PASSWORD=$newPass"
+Set-Content -Path $ENV_FILE -Value $envContent -NoNewline
+Write-Ok "Credentials gesetzt: $newUser / $('*' * $newPass.Length)"
+
+# --- 6. Airbyte starten ------------------------------------------------------
+
+Write-Step "Airbyte starten (dauert ca. 3-5 Minuten beim ersten Mal)"
 
 Push-Location $AIRBYTE_DIR
 try {
     docker compose up -d
     if ($LASTEXITCODE -ne 0) {
         Write-Fail "docker compose up fehlgeschlagen."
+        Write-Warn "Logs pruefen: docker compose logs --tail 30"
         exit 1
     }
     Write-Ok "Airbyte-Container gestartet."
@@ -140,7 +174,7 @@ try {
     Pop-Location
 }
 
-# ─── 7. Auf UI warten ────────────────────────────────────────────────────────
+# --- 7. Auf UI warten --------------------------------------------------------
 
 Write-Step "Warte bis Airbyte UI erreichbar ist (http://localhost:8000)"
 
@@ -150,35 +184,39 @@ $elapsed    = 0
 
 while ($elapsed -lt $maxWaitSec) {
     try {
-        $response = Invoke-WebRequest -Uri "http://localhost:8000" -TimeoutSec 5 -UseBasicParsing -ErrorAction SilentlyContinue
-        if ($response.StatusCode -lt 500) { break }
+        $response = Invoke-WebRequest -Uri "http://localhost:8000" -TimeoutSec 5 `
+            -UseBasicParsing -ErrorAction SilentlyContinue
+        if ($null -ne $response -and $response.StatusCode -lt 500) { break }
     } catch { }
 
-    Write-Host "    Warte... ($elapsed/$maxWaitSec s)" -ForegroundColor DarkGray
     Start-Sleep -Seconds $interval
     $elapsed += $interval
+    Write-Host "    Warte... ($elapsed/$maxWaitSec s)" -ForegroundColor DarkGray
 }
 
 if ($elapsed -ge $maxWaitSec) {
-    Write-Warn "Timeout – Airbyte UI noch nicht erreichbar."
-    Write-Warn "Manuell prüfen: http://localhost:8000 (ggf. noch etwas warten)"
-    Write-Warn "Logs: docker logs airbyte-webapp --tail 30"
+    Write-Warn "Timeout - Airbyte UI noch nicht erreichbar."
+    Write-Warn "Manuell pruefen: http://localhost:8000 (ggf. noch 1-2 Minuten warten)"
+    Write-Warn "Logs: docker compose -f $AIRBYTE_DIR\docker-compose.yaml logs --tail 30"
 } else {
     Write-Ok "Airbyte UI ist erreichbar!"
 }
 
-# ─── 8. Ergebnis ─────────────────────────────────────────────────────────────
+# --- 8. Ergebnis -------------------------------------------------------------
 
 Write-Host ""
-Write-Host "  ═══════════════════════════════════════════════════════════" -ForegroundColor DarkGray
-Write-Host "  Airbyte läuft!" -ForegroundColor Green
+Write-Host "  ===========================================================" -ForegroundColor DarkGray
+Write-Host "  Airbyte laeuft!" -ForegroundColor Green
 Write-Host ""
-Write-Host "    UI:  http://localhost:8000" -ForegroundColor White
-Write-Host "    API: http://localhost:8001/api/v1/" -ForegroundColor White
-Write-Host "    Login: airbyte / password" -ForegroundColor White
+Write-Host "    UI:    http://localhost:8000" -ForegroundColor White
+Write-Host "    API:   http://localhost:8001/api/v1/" -ForegroundColor White
+Write-Host "    Login: $newUser / (dein Passwort)" -ForegroundColor White
 Write-Host ""
-Write-Host "  Nächste Schritte:" -ForegroundColor Cyan
-Write-Host "    -> Sources konfigurieren (Host: hso_source_postgres, Port: 5432)" -ForegroundColor White
-Write-Host "    -> Details: docs\installation-guide.md (Abschnitt 6)" -ForegroundColor White
-Write-Host "  ═══════════════════════════════════════════════════════════" -ForegroundColor DarkGray
+Write-Host "  DB-Verbindung in Airbyte (host.docker.internal verwenden!):" -ForegroundColor Cyan
+Write-Host "    Source PG  ->  Host: host.docker.internal  Port: 5433" -ForegroundColor White
+Write-Host "    Dest   PG  ->  Host: host.docker.internal  Port: 5432" -ForegroundColor White
+Write-Host "    Dest MySQL ->  Host: host.docker.internal  Port: 3306" -ForegroundColor White
+Write-Host ""
+Write-Host "  Details: docs\installation-guide.md (Abschnitt 6)" -ForegroundColor Cyan
+Write-Host "  ===========================================================" -ForegroundColor DarkGray
 Write-Host ""

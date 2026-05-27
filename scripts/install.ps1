@@ -1,8 +1,8 @@
-# install.ps1 – Vollständiges Setup für alle Projektmitglieder
+# install.ps1 - Vollstaendiges Setup fuer alle Projektmitglieder
 # Aufruf: .\scripts\install.ps1
 #
 # Was dieses Skript tut:
-#   1. Voraussetzungen prüfen (Docker, Git, Python)
+#   1. Voraussetzungen pruefen (Docker, Git, Python)
 #   2. .env aus .env.example erstellen (wenn nicht vorhanden)
 #   3. Docker-Images laden
 #   4. Datenbank-Stack starten
@@ -12,7 +12,7 @@
 $ErrorActionPreference = "Stop"
 $ROOT = Split-Path $PSScriptRoot -Parent
 
-# ─── Hilfsfunktionen ─────────────────────────────────────────────────────────
+# --- Hilfsfunktionen ---------------------------------------------------------
 
 function Write-Step([string]$msg) {
     Write-Host "`n==> $msg" -ForegroundColor Cyan
@@ -39,64 +39,64 @@ function Assert-Command([string]$cmd, [string]$hint) {
     Write-Ok "$cmd gefunden."
 }
 
-# ─── Banner ───────────────────────────────────────────────────────────────────
+# --- Banner ------------------------------------------------------------------
 
 Write-Host ""
-Write-Host "  Campus Next-Gen Data-Hub – Installations-Skript" -ForegroundColor White
+Write-Host "  Campus Next-Gen Data-Hub - Installations-Skript" -ForegroundColor White
 Write-Host "  =================================================" -ForegroundColor DarkGray
 Write-Host ""
 
-# ─── 1. Voraussetzungen prüfen ────────────────────────────────────────────────
+# --- 1. Voraussetzungen pruefen ----------------------------------------------
 
-Write-Step "Voraussetzungen prüfen"
+Write-Step "Voraussetzungen pruefen"
 
 Assert-Command "git"    "Installieren: https://git-scm.com/download/win"
 Assert-Command "docker" "Installieren: https://www.docker.com/products/docker-desktop/"
 
-# Docker läuft?
-$dockerRunning = docker info 2>&1
+# Docker laeuft?
+docker info 2>&1 | Out-Null
 if ($LASTEXITCODE -ne 0) {
     Write-Fail "Docker Desktop ist nicht gestartet."
     Write-Host "         Bitte Docker Desktop starten und erneut versuchen." -ForegroundColor Gray
     exit 1
 }
-Write-Ok "Docker Desktop läuft."
+Write-Ok "Docker Desktop laeuft."
 
-# Docker Compose verfügbar?
+# Docker Compose verfuegbar?
 $composeVersion = docker compose version 2>&1
 if ($LASTEXITCODE -ne 0) {
-    Write-Fail "docker compose nicht verfügbar."
+    Write-Fail "docker compose nicht verfuegbar."
     Write-Host "         Docker Desktop auf Version >=4.x aktualisieren." -ForegroundColor Gray
     exit 1
 }
-Write-Ok "docker compose verfügbar ($($composeVersion -replace 'Docker Compose version ',''))."
+Write-Ok "docker compose verfuegbar ($($composeVersion -replace 'Docker Compose version ',''))."
 
-# Python (optional, aber nötig für Szenarien 3 & 4)
+# Python (optional, benoetigt fuer Szenarien 3 und 4)
 if (Get-Command python -ErrorAction SilentlyContinue) {
     $pyVer = python --version 2>&1
     Write-Ok "Python gefunden ($pyVer)."
 } else {
-    Write-Warn "Python nicht gefunden – für Szenarien 3 & 4 erforderlich."
+    Write-Warn "Python nicht gefunden - fuer Szenarien 3 und 4 erforderlich."
     Write-Warn "Installieren: https://www.python.org/downloads/ (>= 3.11, 'Add to PATH' aktivieren)"
 }
 
-# ─── 2. .env erstellen ────────────────────────────────────────────────────────
+# --- 2. .env erstellen -------------------------------------------------------
 
 Write-Step ".env Konfigurationsdatei"
 
 Set-Location $ROOT
 
 if (Test-Path ".env") {
-    Write-Ok ".env existiert bereits – wird nicht überschrieben."
+    Write-Ok ".env existiert bereits - wird nicht ueberschrieben."
 } else {
     Copy-Item ".env.example" ".env"
     Write-Ok ".env aus .env.example erstellt."
-    Write-Warn "Passwörter bei Bedarf in .env anpassen (aktuell: Standardwerte)."
+    Write-Warn "Passwoerter bei Bedarf in .env anpassen (aktuell: Standardwerte)."
 }
 
-# ─── 3. Docker-Images laden ───────────────────────────────────────────────────
+# --- 3. Docker-Images laden --------------------------------------------------
 
-Write-Step "Docker-Images herunterladen (dauert beim ersten Mal ~2 Minuten)"
+Write-Step "Docker-Images herunterladen (dauert beim ersten Mal ca. 2 Minuten)"
 
 docker compose pull
 if ($LASTEXITCODE -ne 0) {
@@ -105,7 +105,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Ok "Images bereit."
 
-# ─── 4. Stack starten ─────────────────────────────────────────────────────────
+# --- 4. Stack starten --------------------------------------------------------
 
 Write-Step "Datenbank-Stack starten"
 
@@ -117,11 +117,11 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Ok "Container gestartet."
 
-# ─── 5. Auf healthy warten ────────────────────────────────────────────────────
+# --- 5. Auf healthy warten ---------------------------------------------------
 
 Write-Step "Warte bis alle Container healthy sind..."
 
-$services  = @("hso_source_postgres", "hso_dest_postgres", "hso_dest_mysql")
+$services   = @("hso_source_postgres", "hso_dest_postgres", "hso_dest_mysql")
 $maxWaitSec = 120
 $interval   = 5
 $elapsed    = 0
@@ -129,7 +129,7 @@ $elapsed    = 0
 while ($elapsed -lt $maxWaitSec) {
     $allHealthy = $true
     foreach ($svc in $services) {
-        $status = docker inspect --format "{{.State.Health.Status}}" $svc 2>$null
+        $status = (docker inspect --format "{{.State.Health.Status}}" $svc 2>$null).Trim()
         if ($status -ne "healthy") {
             $allHealthy = $false
         }
@@ -142,29 +142,29 @@ while ($elapsed -lt $maxWaitSec) {
 }
 
 if ($elapsed -ge $maxWaitSec) {
-    Write-Warn "Timeout – nicht alle Container sind healthy. Status:"
+    Write-Warn "Timeout - nicht alle Container sind healthy. Status:"
     docker compose ps
-    Write-Warn "Logs prüfen: docker logs hso_source_postgres --tail 30"
+    Write-Warn "Logs pruefen: docker logs hso_source_postgres --tail 30"
 } else {
     foreach ($svc in $services) {
         Write-Ok "$svc ist healthy."
     }
 }
 
-# ─── 6. Ergebnis & nächste Schritte ──────────────────────────────────────────
+# --- 6. Ergebnis und naechste Schritte ---------------------------------------
 
 Write-Host ""
-Write-Host "  ═══════════════════════════════════════════════════" -ForegroundColor DarkGray
-Write-Host "  Stack läuft. Verbindungsparameter:" -ForegroundColor Green
+Write-Host "  ===================================================" -ForegroundColor DarkGray
+Write-Host "  Stack laeuft. Verbindungsparameter:" -ForegroundColor Green
 Write-Host ""
 Write-Host "    Source  PostgreSQL  ->  localhost:5433  (sourcedb / sourceuser)" -ForegroundColor White
 Write-Host "    Dest    PostgreSQL  ->  localhost:5432  (destdb   / destuser  )" -ForegroundColor White
 Write-Host "    Dest    MySQL       ->  localhost:3306  (destdb   / destuser  )" -ForegroundColor White
 Write-Host ""
-Write-Host "  Nächster Schritt: Airbyte starten" -ForegroundColor Cyan
+Write-Host "  Naechster Schritt: Airbyte starten" -ForegroundColor Cyan
 Write-Host "    .\scripts\setup-airbyte.ps1" -ForegroundColor White
 Write-Host ""
 Write-Host "  Oder direkt zum Installations-Guide:" -ForegroundColor Cyan
 Write-Host "    docs\installation-guide.md" -ForegroundColor White
-Write-Host "  ═══════════════════════════════════════════════════" -ForegroundColor DarkGray
+Write-Host "  ===================================================" -ForegroundColor DarkGray
 Write-Host ""

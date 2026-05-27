@@ -1,4 +1,4 @@
-# start.ps1 – Startet alle Custom-Datenbanken
+# start.ps1 - Startet alle Custom-Datenbanken
 # Aufruf: .\scripts\start.ps1
 
 $ErrorActionPreference = "Stop"
@@ -6,13 +6,13 @@ $ROOT = Split-Path $PSScriptRoot -Parent
 
 Write-Host "==> Starte HSO Datenbank-Stack..." -ForegroundColor Cyan
 
-# .env prüfen
+# .env pruefen
 if (-not (Test-Path "$ROOT\.env")) {
-    Write-Host "Keine .env gefunden – erstelle aus .env.example" -ForegroundColor Yellow
+    Write-Host "Keine .env gefunden - erstelle aus .env.example" -ForegroundColor Yellow
     Copy-Item "$ROOT\.env.example" "$ROOT\.env"
 }
 
-# Docker prüfen
+# Docker pruefen
 if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
     Write-Error "Docker nicht gefunden. Bitte Docker Desktop installieren."
 }

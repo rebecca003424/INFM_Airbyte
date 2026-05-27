@@ -6,7 +6,10 @@
       "Bash(python)",
       "Bash(docker compose *)",
       "Bash(docker --version)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Bash(head -80 \"C:\\\\tools\\\\airbyte\\\\docker-compose.yaml\")",
+      "Bash(pwsh -NoProfile -NonInteractive -Command ' *)",
+      "WebFetch(domain:docs.airbyte.com)"
     ]
   }
 }

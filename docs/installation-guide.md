@@ -135,8 +135,8 @@ docker ps --filter "name=airbyte" --format "table {{.Names}}\t{{.Status}}"
 | Feld | Wert |
 |------|------|
 | Source name | `HSO Source PostgreSQL` |
-| Host | `hso_source_postgres` |
-| Port | `5432` |
+| Host | `host.docker.internal` |
+| Port | `5433` |
 | Database | `sourcedb` |
 | Username | `sourceuser` |
 | Password | `sourcepassword` |
@@ -153,7 +153,7 @@ docker ps --filter "name=airbyte" --format "table {{.Names}}\t{{.Status}}"
 | Feld | Wert |
 |------|------|
 | Destination name | `HSO Dest PostgreSQL` |
-| Host | `hso_dest_postgres` |
+| Host | `host.docker.internal` |
 | Port | `5432` |
 | Database | `destdb` |
 | Username | `destuser` |
@@ -186,14 +186,20 @@ Häufige Ursachen:
 
 ### Airbyte-Container können DBs nicht erreichen
 
+Airbyte-Connector-Container kommunizieren über `host.docker.internal` mit den Datenbanken. Prüfen:
+
 ```powershell
-# Prüfen ob alle im gleichen Netzwerk sind
-docker network inspect airbyte_net
+# Verbindung von einem Container aus testen
+docker run --rm alpine nslookup host.docker.internal
+# Muss eine IP (192.168.65.x) zurückgeben
+
+# DB-Port vom Host aus prüfen
+Test-NetConnection -ComputerName localhost -Port 5433  # Source PG
+Test-NetConnection -ComputerName localhost -Port 5432  # Dest PG
+Test-NetConnection -ComputerName localhost -Port 3306  # Dest MySQL
 ```
 
-Alle drei DB-Container (`hso_source_postgres`, `hso_dest_postgres`, `hso_dest_mysql`) und die Airbyte-Worker müssen in der Liste erscheinen.
-
-Falls Airbyte-Container fehlen → `setup-airbyte.ps1` erneut ausführen.
+Falls die Ports nicht erreichbar sind: DB-Stack läuft nicht → `.\scripts\start.ps1`
 
 ### Testdaten wurden nicht geladen (source-postgres ist leer)
 
@@ -215,11 +221,11 @@ pip install requests psycopg2-binary
 
 ## Verbindungsübersicht (Spickzettel)
 
-| Service | Für DB-Tools (lokal) | Für Airbyte (Container-intern) |
-|---------|----------------------|---------------------------------|
-| Source PostgreSQL | `localhost:5433` | `hso_source_postgres:5432` |
-| Dest PostgreSQL | `localhost:5432` | `hso_dest_postgres:5432` |
-| Dest MySQL | `localhost:3306` | `hso_dest_mysql:3306` |
+| Service | Für DB-Tools (lokal) | Für Airbyte (in der UI eintragen) |
+|---------|----------------------|-----------------------------------|
+| Source PostgreSQL | `localhost:5433` | `host.docker.internal:5433` |
+| Dest PostgreSQL | `localhost:5432` | `host.docker.internal:5432` |
+| Dest MySQL | `localhost:3306` | `host.docker.internal:3306` |
 | Airbyte UI | http://localhost:8000 | – |
 | PostgREST (Szenario 6) | http://localhost:3000 | – |
 
