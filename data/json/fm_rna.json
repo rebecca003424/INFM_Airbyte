@@ -1,0 +1,3035 @@
+{
+"select * from rna": [
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "000       ",
+		"kurz_rna" : null,
+		"rna" : "Nicht genutzte HNF       ",
+		"text_rna" : "Nicht genutzte oder nicht nutzbare Hauptnutzflächen                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "001       ",
+		"kurz_rna" : null,
+		"rna" : "Freifläche Wohnen        ",
+		"text_rna" : "Freiluftexperimentierflächen                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "002       ",
+		"kurz_rna" : null,
+		"rna" : "Freifläche Sport         ",
+		"text_rna" : "Sportfreiflächen                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "003       ",
+		"kurz_rna" : null,
+		"rna" : "Freifläche Botanik       ",
+		"text_rna" : "Botanikfreiflächen                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "004       ",
+		"kurz_rna" : null,
+		"rna" : "Freifläche Landwirtschaft",
+		"text_rna" : "Landwirtschaftsfreiflächen                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "005       ",
+		"kurz_rna" : null,
+		"rna" : "Freifläche Tiere         ",
+		"text_rna" : "Tierhaltungsfreiflächen                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "006       ",
+		"kurz_rna" : null,
+		"rna" : "Freifläche Lager         ",
+		"text_rna" : "Freilagerflächen                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "007       ",
+		"kurz_rna" : null,
+		"rna" : "Freifläche Pkw           ",
+		"text_rna" : "Fahrzeugabstellfreiflächen                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "011       ",
+		"kurz_rna" : null,
+		"rna" : "Wohnraum im Freien       ",
+		"text_rna" : "Wohnräume im Freien                                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "012       ",
+		"kurz_rna" : null,
+		"rna" : "Gemeinschaftsraum i.Fr.  ",
+		"text_rna" : "Gemeinschaftsräume im Freien                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "013       ",
+		"kurz_rna" : null,
+		"rna" : "Pausenraum im Freien     ",
+		"text_rna" : "Pausenräume im Freien                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "015       ",
+		"kurz_rna" : null,
+		"rna" : "Speiseraum im Freien     ",
+		"text_rna" : "Speiseräume im Freien                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "032       ",
+		"kurz_rna" : null,
+		"rna" : "Werkstatt im Freien      ",
+		"text_rna" : "Werkstätten im Freien                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "033       ",
+		"kurz_rna" : null,
+		"rna" : "Labor im Freien          ",
+		"text_rna" : "Laborräume im Freien                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "036       ",
+		"kurz_rna" : null,
+		"rna" : "Tierhaltung im Freien    ",
+		"text_rna" : "Tierhaltungsräume im Freien                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "037       ",
+		"kurz_rna" : null,
+		"rna" : "Pflanzenraum im Freien   ",
+		"text_rna" : "Pflanzenzuchträume im Freien                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "039       ",
+		"kurz_rna" : null,
+		"rna" : "Sonderarbeit im Freien   ",
+		"text_rna" : "Sonderarbeitsräume im Freien                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "041       ",
+		"kurz_rna" : null,
+		"rna" : "Lager im Freien          ",
+		"text_rna" : "Lagerräume im Freien                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "044       ",
+		"kurz_rna" : null,
+		"rna" : "An-\/Ausgabe im Freien    ",
+		"text_rna" : "Annahme- und Ausgaberäume im Freien                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "055       ",
+		"kurz_rna" : null,
+		"rna" : "Sport im Freien          ",
+		"text_rna" : "Sporträume im Freien                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "056       ",
+		"kurz_rna" : null,
+		"rna" : "Zuschauer im Freien      ",
+		"text_rna" : "Zuschauerräume im Freien                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "057       ",
+		"kurz_rna" : null,
+		"rna" : "Bühnen u.Studio im Freien",
+		"text_rna" : "Bühnen- und Studioräume im Freien                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "066       ",
+		"kurz_rna" : null,
+		"rna" : "Freilufttherapie         ",
+		"text_rna" : "Freilufttherapieräume                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "074       ",
+		"kurz_rna" : null,
+		"rna" : "Fahrzeugabstellfläche    ",
+		"text_rna" : "Fahrzeugabstellflächen                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "091       ",
+		"kurz_rna" : null,
+		"rna" : "Gang,Fluchtweg im Freien ",
+		"text_rna" : "Gänge, Fluchtwege im Freien                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "092       ",
+		"kurz_rna" : null,
+		"rna" : "Treppe im Freien         ",
+		"text_rna" : "Treppen im Freien                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "094       ",
+		"kurz_rna" : null,
+		"rna" : "Fahrzeugverkehrsfläche   ",
+		"text_rna" : "Fahrzeugverkehrsflächen im Freien                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "100       ",
+		"kurz_rna" : null,
+		"rna" : "Wohnen und Aufenthalt    ",
+		"text_rna" : "Wohnen und Aufenthalt                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "110       ",
+		"kurz_rna" : null,
+		"rna" : "Wohnraum                 ",
+		"text_rna" : "Wohnräume                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "111       ",
+		"kurz_rna" : null,
+		"rna" : "Wohnraum i.Mehrzimmerwohn",
+		"text_rna" : "Wohnräume in Mehrzimmerwohnungen                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "112       ",
+		"kurz_rna" : null,
+		"rna" : "Wohnküche                ",
+		"text_rna" : "Wohnküchen                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "113       ",
+		"kurz_rna" : null,
+		"rna" : "Wohndiele                ",
+		"text_rna" : "Wohndielen                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "114       ",
+		"kurz_rna" : null,
+		"rna" : "Wohnraum i.Einzimmerwohn.",
+		"text_rna" : "Wohnräume in Einzimmerwohnungen                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "115       ",
+		"kurz_rna" : null,
+		"rna" : "Einzelwohnraum           ",
+		"text_rna" : "Einzelwohnräume                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "116       ",
+		"kurz_rna" : null,
+		"rna" : "Gruppenwohnraum          ",
+		"text_rna" : "Gruppenwohnräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "120       ",
+		"kurz_rna" : null,
+		"rna" : "Gemeinschaftsraum        ",
+		"text_rna" : "Gemeinschaftsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "121       ",
+		"kurz_rna" : null,
+		"rna" : "Aufenthaltsraum          ",
+		"text_rna" : "Aufenthaltsräume allgemein                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "122       ",
+		"kurz_rna" : null,
+		"rna" : "Bereitschaftsraum        ",
+		"text_rna" : "Bereitschaftsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "123       ",
+		"kurz_rna" : null,
+		"rna" : "Kinderspielraum          ",
+		"text_rna" : "Kinderspielräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "130       ",
+		"kurz_rna" : null,
+		"rna" : "Pausenraum               ",
+		"text_rna" : "Pausenräume                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "131       ",
+		"kurz_rna" : null,
+		"rna" : "Pausenraum               ",
+		"text_rna" : "Pausenräume allgemein                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "132       ",
+		"kurz_rna" : null,
+		"rna" : "Pausenhalle              ",
+		"text_rna" : "Pausenhallen                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "133       ",
+		"kurz_rna" : null,
+		"rna" : "Pausenfläche             ",
+		"text_rna" : "Pausenflächen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "134       ",
+		"kurz_rna" : null,
+		"rna" : "Wandelhalle              ",
+		"text_rna" : "Wandelhallen                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "135       ",
+		"kurz_rna" : null,
+		"rna" : "Ruheraum                 ",
+		"text_rna" : "Ruheräume allgemein                                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "136       ",
+		"kurz_rna" : null,
+		"rna" : "Patientenruheraum        ",
+		"text_rna" : "Patientenruheräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "140       ",
+		"kurz_rna" : null,
+		"rna" : "Warteraum                ",
+		"text_rna" : "Warteräume                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "141       ",
+		"kurz_rna" : null,
+		"rna" : "Warteraum                ",
+		"text_rna" : "Warteräume allgemein                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "142       ",
+		"kurz_rna" : null,
+		"rna" : "Wartehalle               ",
+		"text_rna" : "Wartehallen                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "143       ",
+		"kurz_rna" : null,
+		"rna" : "Wartefläche              ",
+		"text_rna" : "Warteflächen                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "150       ",
+		"kurz_rna" : null,
+		"rna" : "Speiseraum               ",
+		"text_rna" : "Speiseräume                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "151       ",
+		"kurz_rna" : null,
+		"rna" : "Speiseraum               ",
+		"text_rna" : "Speiseräume allgemein                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "152       ",
+		"kurz_rna" : null,
+		"rna" : "Speisesaal               ",
+		"text_rna" : "Speisesäle                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "153       ",
+		"kurz_rna" : null,
+		"rna" : "Cafeteria                ",
+		"text_rna" : "Cafeterias                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "200       ",
+		"kurz_rna" : null,
+		"rna" : "Büroarbeit               ",
+		"text_rna" : "Büroarbeit                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "210       ",
+		"kurz_rna" : null,
+		"rna" : "Büroraum                 ",
+		"text_rna" : "Büroräume                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "211       ",
+		"kurz_rna" : null,
+		"rna" : "Büroraum allgemein       ",
+		"text_rna" : "Büroräume allgemein                                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "212       ",
+		"kurz_rna" : null,
+		"rna" : "Schreibraum              ",
+		"text_rna" : "Schreibräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "213       ",
+		"kurz_rna" : null,
+		"rna" : "Büroraum m.expr.Arb.platz",
+		"text_rna" : "Büroräume mit manuellem\/experimentellem Arbeitsplatz                                                                                                                                                                                                           ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "214       ",
+		"kurz_rna" : null,
+		"rna" : "Büroraum m.Archiv        ",
+		"text_rna" : "Büroräume mit Archivfunktion                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "215       ",
+		"kurz_rna" : null,
+		"rna" : "Büroraum m.Materialausg. ",
+		"text_rna" : "Büroräume mit Materialausgabe                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "216       ",
+		"kurz_rna" : null,
+		"rna" : "Einzelarbeitskabinen     ",
+		"text_rna" : "Einzelarbeitsplätze (... kabinen)                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "220       ",
+		"kurz_rna" : null,
+		"rna" : "Großraumbüro             ",
+		"text_rna" : "Großraumbüros                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "230       ",
+		"kurz_rna" : null,
+		"rna" : "Besprechungsraum         ",
+		"text_rna" : "Besprechungsräume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "231       ",
+		"kurz_rna" : null,
+		"rna" : "Besprechungsraum         ",
+		"text_rna" : "Besprechungsräume allgemein                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "232       ",
+		"kurz_rna" : null,
+		"rna" : "Sprechzimmer             ",
+		"text_rna" : "Sprechzimmer                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "233       ",
+		"kurz_rna" : null,
+		"rna" : "Sitzungszimmer           ",
+		"text_rna" : "Sitzungssäle                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "234       ",
+		"kurz_rna" : null,
+		"rna" : "Gerichtssaal             ",
+		"text_rna" : "Gerichtssäle                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "235       ",
+		"kurz_rna" : null,
+		"rna" : "Parlamentssaal           ",
+		"text_rna" : "Parlamentssäle                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "240       ",
+		"kurz_rna" : null,
+		"rna" : "Konstruktionsraum        ",
+		"text_rna" : "Konstruktionsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "250       ",
+		"kurz_rna" : null,
+		"rna" : "Schalterraum             ",
+		"text_rna" : "Schalterräume                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "260       ",
+		"kurz_rna" : null,
+		"rna" : "Bedienungsraum           ",
+		"text_rna" : "Bedienungsräume                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "261       ",
+		"kurz_rna" : null,
+		"rna" : "Fernsprechraum\/-kabine   ",
+		"text_rna" : "Fernsprechräume\/-kabinen                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "262       ",
+		"kurz_rna" : null,
+		"rna" : "Fernsprechvermittlung    ",
+		"text_rna" : "Fernsprechvermittlungsräume                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "263       ",
+		"kurz_rna" : null,
+		"rna" : "Fernschreibraum          ",
+		"text_rna" : "Fernschreibräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "264       ",
+		"kurz_rna" : null,
+		"rna" : "Funkzentrale             ",
+		"text_rna" : "Funkzentralen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "265       ",
+		"kurz_rna" : null,
+		"rna" : "Bedienung Förderanlagen  ",
+		"text_rna" : "Bedienungsräume für  Förderanlagen                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "266       ",
+		"kurz_rna" : null,
+		"rna" : "Regieraum                ",
+		"text_rna" : "Regieräume                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "267       ",
+		"kurz_rna" : null,
+		"rna" : "Projektionsraum          ",
+		"text_rna" : "Projektionsräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "268       ",
+		"kurz_rna" : null,
+		"rna" : "Schalterraum f.betr.Anl. ",
+		"text_rna" : "Schalträume für betriebstechnische Anlagen                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "269       ",
+		"kurz_rna" : null,
+		"rna" : "Schalterraum f.betr.Einb.",
+		"text_rna" : "Schalträume für betriebliche Einbauten                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "270       ",
+		"kurz_rna" : null,
+		"rna" : "Aufsichtsraum            ",
+		"text_rna" : "Aufsichtsräume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "280       ",
+		"kurz_rna" : null,
+		"rna" : "Bürotechnikraum          ",
+		"text_rna" : "Bürotechnikräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "281       ",
+		"kurz_rna" : null,
+		"rna" : "Vervielfältigungsraum    ",
+		"text_rna" : "Vervielfältigungsräume                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "282       ",
+		"kurz_rna" : null,
+		"rna" : "Filmbearbeitungsraum     ",
+		"text_rna" : "Filmbearbeitungsräume                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "283       ",
+		"kurz_rna" : null,
+		"rna" : "ADV-Großrechneranl.-raum ",
+		"text_rna" : "ADV-Großrechenanlagenräume                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "284       ",
+		"kurz_rna" : null,
+		"rna" : "ADV-Kleinrechneranl.-raum",
+		"text_rna" : "ADV-Kleinrechenanlagenräume                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "285       ",
+		"kurz_rna" : null,
+		"rna" : "ADV-Peripheriegeräteraum ",
+		"text_rna" : "ADV-Periphergeräteräume                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "286       ",
+		"kurz_rna" : null,
+		"rna" : "Schreibautomatenraum     ",
+		"text_rna" : "Schreibautomatenräume                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "300       ",
+		"kurz_rna" : null,
+		"rna" : "Produktion,Experimente   ",
+		"text_rna" : "Produktion, Hand- und Maschinenarbeit, Experimente                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "310       ",
+		"kurz_rna" : null,
+		"rna" : "Werkhallen               ",
+		"text_rna" : "Werkhallen                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "311       ",
+		"kurz_rna" : null,
+		"rna" : "Prod.-halle Grundstoffe  ",
+		"text_rna" : "Produktionshallen für Grundstoffe                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "312       ",
+		"kurz_rna" : null,
+		"rna" : "Prod.-halle Versorg.güter",
+		"text_rna" : "Produktionshallen für Investitions- und Versorgungsgüter                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "313       ",
+		"kurz_rna" : null,
+		"rna" : "Prod.-halle Nahrung      ",
+		"text_rna" : "Produktionshallen für Nahrungs- und Genußmittel                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "314       ",
+		"kurz_rna" : null,
+		"rna" : "Wartungshalle            ",
+		"text_rna" : "Instandsetzungs-\/ Wartungshallen                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "315       ",
+		"kurz_rna" : null,
+		"rna" : "Techn. Versuchshalle     ",
+		"text_rna" : "Technologische Versuchshallen                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "316       ",
+		"kurz_rna" : null,
+		"rna" : "Phys. Versuchshalle      ",
+		"text_rna" : "Physikalische Versuchshallen                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "317       ",
+		"kurz_rna" : null,
+		"rna" : "Chem. Versuchshalle      ",
+		"text_rna" : "Chemie-Versuchshallen                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "318       ",
+		"kurz_rna" : null,
+		"rna" : "Sonderversuchshalle      ",
+		"text_rna" : "Sonderversuchshallen                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "320       ",
+		"kurz_rna" : null,
+		"rna" : "Werkstatt                ",
+		"text_rna" : "Werkstätten                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "321       ",
+		"kurz_rna" : null,
+		"rna" : "Metallwerkstatt grob     ",
+		"text_rna" : "Metallwerkstätten (grob)                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "322       ",
+		"kurz_rna" : null,
+		"rna" : "Metallwerkstatt fein     ",
+		"text_rna" : "Metallwerkstätten (fein)                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "323       ",
+		"kurz_rna" : null,
+		"rna" : "Elektrotechn.-werkstatt  ",
+		"text_rna" : "Elektrotechnikwerkstätten                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "324       ",
+		"kurz_rna" : null,
+		"rna" : "Oberflächenbeh.-werkstatt",
+		"text_rna" : "Oberflächenbehandlungswerkstätten                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "325       ",
+		"kurz_rna" : null,
+		"rna" : "Holz-\/Kunststoffwerkstatt",
+		"text_rna" : "Holz-\/Kunststoffwerkstätten                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "326       ",
+		"kurz_rna" : null,
+		"rna" : "Bau-\/Steine-\/Erdwerkstatt",
+		"text_rna" : "Bau-\/Stein-\/Erd-Werkstätten                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "327       ",
+		"kurz_rna" : null,
+		"rna" : "Drucktechnikwerkstatt    ",
+		"text_rna" : "Drucktechnikwerkstätten                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "328       ",
+		"kurz_rna" : null,
+		"rna" : "Textil-\/Lederwerkstatt   ",
+		"text_rna" : "Textil-\/Lederwerkstätten                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "329       ",
+		"kurz_rna" : null,
+		"rna" : "Werkstatt Gesundheit     ",
+		"text_rna" : "Werkstätten für Gesundheit und Körperpflege                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "060"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "330       ",
+		"kurz_rna" : null,
+		"rna" : "Techn.Labor              ",
+		"text_rna" : "Technologische Labors                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "331       ",
+		"kurz_rna" : null,
+		"rna" : "Techn.Labor (o.Absaug.)  ",
+		"text_rna" : "Technologische Labors einfach (ohne Absaugung)                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "332       ",
+		"kurz_rna" : null,
+		"rna" : "Techn.Lab(Absaug\/Ex-schu)",
+		"text_rna" : "Technologische Labors (mit Absaugung und\/oder Explosionsschutz)                                                                                                                                                                                                ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "333       ",
+		"kurz_rna" : null,
+		"rna" : "Labor stationäre Maschine",
+		"text_rna" : "Labors für stationäre Maschinen                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "334       ",
+		"kurz_rna" : null,
+		"rna" : "Lichttech. Labor         ",
+		"text_rna" : "Lichttechnische Labors                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "335       ",
+		"kurz_rna" : null,
+		"rna" : "Schalltech. Labor        ",
+		"text_rna" : "Schalltechnische Labors                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "336       ",
+		"kurz_rna" : null,
+		"rna" : "Techn.Lab.erh.Deckentragl",
+		"text_rna" : "Technologische Labors mit erhöhter Deckentragfähigkeit                                                                                                                                                                                                         ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "337       ",
+		"kurz_rna" : null,
+		"rna" : "Techn.Lab.m.Ersch.schutz ",
+		"text_rna" : "Technologische Labors mit Erschütterungsschutz                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "338       ",
+		"kurz_rna" : null,
+		"rna" : "Techn.Labor mit Berstwand",
+		"text_rna" : "Technologische Labors mit Berstwänden                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "340       ",
+		"kurz_rna" : null,
+		"rna" : "Phys.,elektrotech.Labor  ",
+		"text_rna" : "Physikalische, physikalischtechnische, elektrotechnische Labors                                                                                                                                                                                                ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "341       ",
+		"kurz_rna" : null,
+		"rna" : "Elektroniklabor          ",
+		"text_rna" : "Elektroniklabors (Verwendung elektronischer Bauelemente)                                                                                                                                                                                                       ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "342       ",
+		"kurz_rna" : null,
+		"rna" : "Physiklabor einfach      ",
+		"text_rna" : "Physiklabors einfach                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "343       ",
+		"kurz_rna" : null,
+		"rna" : "Physiklabor m.luftt.An.  ",
+		"text_rna" : "Physiklabors mit besonderen lufttechnischen Anforderungen                                                                                                                                                                                                      ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "344       ",
+		"kurz_rna" : null,
+		"rna" : "Phys.Meßraum einfach     ",
+		"text_rna" : "Physikalische Meßräume und Räume für instrumentelle Analytik (nur Methodenanwendung)                                                                                                                                                                           ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "345       ",
+		"kurz_rna" : null,
+		"rna" : "Phys.Meßraum m.luftt.An. ",
+		"text_rna" : "Physikalische Meßräume und Räume für instrumentelle Analytik (nur Methodenanwendung) mit besonderen lufttechnischen Anforderungen                                                                                                                              ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "346       ",
+		"kurz_rna" : null,
+		"rna" : "Kernphysiklabor m.Dekont.",
+		"text_rna" : "Kernphysiklabors mit Dekontamination von Abwasser und Abluft                                                                                                                                                                                                   ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "347       ",
+		"kurz_rna" : null,
+		"rna" : "Phys.lab.Meßr.Ersch.sch. ",
+		"text_rna" : "Physiklabors und Meßräume mit Erschütterungsschutz                                                                                                                                                                                                             ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "348       ",
+		"kurz_rna" : null,
+		"rna" : "Phys.lab.Meßr.elt.Abschir",
+		"text_rna" : "Physiklabors und Meßräume mit elektromagnetischer Abschirmung                                                                                                                                                                                                  ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "349       ",
+		"kurz_rna" : null,
+		"rna" : "Phys.lab.Meßr.Strahl.sch.",
+		"text_rna" : "Physiklabors und Meßräume mit Strahlenschutz                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "350       ",
+		"kurz_rna" : null,
+		"rna" : "Chem.bakt.morph.Labor    ",
+		"text_rna" : "Chemische, bakteriologische, morphologische Labors                                                                                                                                                                                                             ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "351       ",
+		"kurz_rna" : null,
+		"rna" : "Morph.Labor(o.Hygienean.)",
+		"text_rna" : "Morphologische Labors (ohne Hygieneanforderungen)                                                                                                                                                                                                              ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "352       ",
+		"kurz_rna" : null,
+		"rna" : "Anal.präp.chem. Labor    ",
+		"text_rna" : "Labors für analytisch- und präparativ-chemische Arbeitsweisen                                                                                                                                                                                                  ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "353       ",
+		"kurz_rna" : null,
+		"rna" : "Chemisch-techn.Labor     ",
+		"text_rna" : "Chemischtechnische Labors                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "354       ",
+		"kurz_rna" : null,
+		"rna" : "Labor m.zus.Hygieneanf.  ",
+		"text_rna" : "Labors mit zusätzlichen Hygieneanforderungen                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "355       ",
+		"kurz_rna" : null,
+		"rna" : "Lab.m.zus.Hyg.u.luftt.An.",
+		"text_rna" : "Labors mit zusätzlichen hygienischen und besonderen lufttechnischen Anforderungen                                                                                                                                                                              ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "356       ",
+		"kurz_rna" : null,
+		"rna" : "Isotopenlabor m.Dekont.  ",
+		"text_rna" : "Isotopenlabors mit Dekontamination von Abwasser und Abluft                                                                                                                                                                                                     ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "357       ",
+		"kurz_rna" : null,
+		"rna" : "Iso.lab.m.Dek.u.luftt.An.",
+		"text_rna" : "Isotopenlabors mit Dekontamination von Abwasser und Abluft und besonderen lufttechnischen Anforderungen                                                                                                                                                        ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "358       ",
+		"kurz_rna" : null,
+		"rna" : "Iso.lab.m.Dek,hyg.luftt.A",
+		"text_rna" : "Isotopenlabors mir Dekontamination von Abwasser und Abluft, hygienischen und besonderen lufttechnischen Anforderungen                                                                                                                                          ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "359       ",
+		"kurz_rna" : null,
+		"rna" : "Labor m.bes.Hyg.Schleusen",
+		"text_rna" : "Labors mit besonderen Hygieneanforderungen, Zugang über Schleusen und Zwangsduschen                                                                                                                                                                            ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "360       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Tierhaltung       ",
+		"text_rna" : "Räume für Tierhaltung                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "361       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Stallhaltung allg.",
+		"text_rna" : "Räume für Stallhaltung allgemein                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "362       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Käfighaltung allg.",
+		"text_rna" : "Räume für Käfighaltung allgemein                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "363       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Tierhaltung exp.  ",
+		"text_rna" : "Räume für Tierhaltung experimentell                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "364       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Käfighaltung exp. ",
+		"text_rna" : "Räume für Käfighaltung experimentell                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "365       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Beckenhaltung     ",
+		"text_rna" : "Räume für Beckenhaltung                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "366       ",
+		"kurz_rna" : null,
+		"rna" : "Tierpflegeraum           ",
+		"text_rna" : "Tierpflegeräume                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "367       ",
+		"kurz_rna" : null,
+		"rna" : "Futteraufbereitungsraum  ",
+		"text_rna" : "Futteraufbereitungsräume                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "368       ",
+		"kurz_rna" : null,
+		"rna" : "Milch-\/Melkraum          ",
+		"text_rna" : "Milch-\/Melkräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "369       ",
+		"kurz_rna" : null,
+		"rna" : "Kadaverraum              ",
+		"text_rna" : "Kadaverräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "370       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Pflanzenzucht     ",
+		"text_rna" : "Räume für Pflanzenzucht                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "371       ",
+		"kurz_rna" : null,
+		"rna" : "Gewächshaus allg.        ",
+		"text_rna" : "Gewächshäuser allgemein                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "372       ",
+		"kurz_rna" : null,
+		"rna" : "Gewächshaus m.bes.Klima  ",
+		"text_rna" : "Gewächshäuser mit besonderen klimatischen Bedingungen                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "373       ",
+		"kurz_rna" : null,
+		"rna" : "Pflanzenzuchtraum exp.   ",
+		"text_rna" : "Pflanzenzuchträume experimentell                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "374       ",
+		"kurz_rna" : null,
+		"rna" : "Pilzzuchtraum            ",
+		"text_rna" : "Pilzzuchträume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "375       ",
+		"kurz_rna" : null,
+		"rna" : "Pflanzenzuchtvorber.raum ",
+		"text_rna" : "Pflanzenzuchtvorbereitungsräume                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "380       ",
+		"kurz_rna" : null,
+		"rna" : "Küche                    ",
+		"text_rna" : "Küchen                                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "381       ",
+		"kurz_rna" : null,
+		"rna" : "Küche in Wohnungen       ",
+		"text_rna" : "Küchen in Wohnungen                                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "382       ",
+		"kurz_rna" : null,
+		"rna" : "Teilküche                ",
+		"text_rna" : "Teilküchen                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "383       ",
+		"kurz_rna" : null,
+		"rna" : "Großküche                ",
+		"text_rna" : "Großküchen                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "384       ",
+		"kurz_rna" : null,
+		"rna" : "Spezialküche             ",
+		"text_rna" : "Spezialküchen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "385       ",
+		"kurz_rna" : null,
+		"rna" : "Küchenvorbereitungsraum  ",
+		"text_rna" : "Küchenvorbereitungsräume                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "386       ",
+		"kurz_rna" : null,
+		"rna" : "Backraum                 ",
+		"text_rna" : "Backräume                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "387       ",
+		"kurz_rna" : null,
+		"rna" : "Speiseausgabe            ",
+		"text_rna" : "Speiseausgaben                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "388       ",
+		"kurz_rna" : null,
+		"rna" : "Spülküche                ",
+		"text_rna" : "Spülküchen                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "390       ",
+		"kurz_rna" : null,
+		"rna" : "Sonderarbeitsraum        ",
+		"text_rna" : "Sonderarbeitsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "391       ",
+		"kurz_rna" : null,
+		"rna" : "Hauswirtschaftsraum      ",
+		"text_rna" : "Hauswirtschaftsräume                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "392       ",
+		"kurz_rna" : null,
+		"rna" : "Wäschereiraum            ",
+		"text_rna" : "Wäschereiräume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "393       ",
+		"kurz_rna" : null,
+		"rna" : "Wäschepflegeraum         ",
+		"text_rna" : "Wäschepflegeräume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "394       ",
+		"kurz_rna" : null,
+		"rna" : "Spülraum                 ",
+		"text_rna" : "Spülräume                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "395       ",
+		"kurz_rna" : null,
+		"rna" : "Gerätereinigungsraum     ",
+		"text_rna" : "Gerätereinigungsräume                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "396       ",
+		"kurz_rna" : null,
+		"rna" : "Desinfektionsraum        ",
+		"text_rna" : "Desinfektionsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "397       ",
+		"kurz_rna" : null,
+		"rna" : "Sterilisationsraum       ",
+		"text_rna" : "Sterilisationsräume                                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "398       ",
+		"kurz_rna" : null,
+		"rna" : "Pflegeraum               ",
+		"text_rna" : "Pflegearbeitsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "399       ",
+		"kurz_rna" : null,
+		"rna" : "Vorbereitungsraum        ",
+		"text_rna" : "Vorbereitungsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "400       ",
+		"kurz_rna" : null,
+		"rna" : "Lager,Verteilen,Verkaufen",
+		"text_rna" : "Lagern, Verteilen, Verkaufen                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "410       ",
+		"kurz_rna" : null,
+		"rna" : "Lager                    ",
+		"text_rna" : "Lagerräume                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "411       ",
+		"kurz_rna" : null,
+		"rna" : "Lager                    ",
+		"text_rna" : "Lagerräume allgemein                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "412       ",
+		"kurz_rna" : null,
+		"rna" : "Lager m.luftt.An.        ",
+		"text_rna" : "Lagerräume mit lufttechnischen Anforderungen                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "413       ",
+		"kurz_rna" : null,
+		"rna" : "Lager m.hyg.An.          ",
+		"text_rna" : "Lagerräume mit hygienischen Anforderungen                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "414       ",
+		"kurz_rna" : null,
+		"rna" : "Lager m.betriebl.Einb.   ",
+		"text_rna" : "Lagerräume mit betriebsspezifischen Einbauten                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "415       ",
+		"kurz_rna" : null,
+		"rna" : "Lager m.Ex.u.Brandschutz ",
+		"text_rna" : "Lagerräume mit Explosions-\/ Brandschutz                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "416       ",
+		"kurz_rna" : null,
+		"rna" : "Lager m.Stahlenschutz    ",
+		"text_rna" : "Lagerräume mit Strahlenschutz                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "417       ",
+		"kurz_rna" : null,
+		"rna" : "Tresorraum               ",
+		"text_rna" : "Tresorräume                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "418       ",
+		"kurz_rna" : null,
+		"rna" : "Futtermittellager        ",
+		"text_rna" : "Futtermittellager                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "419       ",
+		"kurz_rna" : null,
+		"rna" : "Leichenraum für Anatomie ",
+		"text_rna" : "Leichenräume für Anatomie                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "420       ",
+		"kurz_rna" : null,
+		"rna" : "Archiv,Sammlung          ",
+		"text_rna" : "Archive, Sammlungsräume                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "421       ",
+		"kurz_rna" : null,
+		"rna" : "Archiv                   ",
+		"text_rna" : "Archive                                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "422       ",
+		"kurz_rna" : null,
+		"rna" : "Registratur              ",
+		"text_rna" : "Registraturen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "040"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "423       ",
+		"kurz_rna" : null,
+		"rna" : "Sammlungsraum            ",
+		"text_rna" : "Sammlungsräume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "424       ",
+		"kurz_rna" : null,
+		"rna" : "Magazine                 ",
+		"text_rna" : "Magazine                                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "425       ",
+		"kurz_rna" : null,
+		"rna" : "Magazine m.Klimakonstanz ",
+		"text_rna" : "Magazine mit Klima­konstanz                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "430       ",
+		"kurz_rna" : null,
+		"rna" : "Kühlraum                 ",
+		"text_rna" : "Kühlräume                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "431       ",
+		"kurz_rna" : null,
+		"rna" : "Lebensmittelkühlraum     ",
+		"text_rna" : "Lebensmittelkühlräume                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "432       ",
+		"kurz_rna" : null,
+		"rna" : "Lebensmitteltiefkühlraum ",
+		"text_rna" : "Lebensmitteltiefkühlräume                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "433       ",
+		"kurz_rna" : null,
+		"rna" : "Kühlraum f.med.Zweck     ",
+		"text_rna" : "Kühlräume für medi­zinische Zwecke                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "434       ",
+		"kurz_rna" : null,
+		"rna" : "Kühlraum f.wis.tech.Zweck",
+		"text_rna" : "Kühlräume für wissenschaftl.\/technische Zwecke                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "435       ",
+		"kurz_rna" : null,
+		"rna" : "Leichenkühlraum          ",
+		"text_rna" : "Leichenkühlräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "440       ",
+		"kurz_rna" : null,
+		"rna" : "Annahme u.Ausgabe        ",
+		"text_rna" : "Annahme- und Ausgaberäume                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "441       ",
+		"kurz_rna" : null,
+		"rna" : "Annahme\/Ausgabe allg.    ",
+		"text_rna" : "Annahme- und Ausgaberäume allgemein                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "442       ",
+		"kurz_rna" : null,
+		"rna" : "Sortierraum              ",
+		"text_rna" : "Sortierräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "443       ",
+		"kurz_rna" : null,
+		"rna" : "Packraum                 ",
+		"text_rna" : "Packräume                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "444       ",
+		"kurz_rna" : null,
+		"rna" : "Versandraum              ",
+		"text_rna" : "Versandräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "445       ",
+		"kurz_rna" : null,
+		"rna" : "Versorgungsstützpunkt    ",
+		"text_rna" : "Versorgungsstützpunkte                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "446       ",
+		"kurz_rna" : null,
+		"rna" : "Entsorgungsstützpunkt    ",
+		"text_rna" : "Entsorgungsstützpunkte                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "450       ",
+		"kurz_rna" : null,
+		"rna" : "Verkaufsraum             ",
+		"text_rna" : "Verkaufsräume                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "460       ",
+		"kurz_rna" : null,
+		"rna" : "Ausstellungsraum         ",
+		"text_rna" : "Ausstellungsräume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "500       ",
+		"kurz_rna" : null,
+		"rna" : "Bildung,Unterricht Kultur",
+		"text_rna" : "Bildung, Unterricht und Kultur                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "510       ",
+		"kurz_rna" : null,
+		"rna" : "Unterricht m.fest.Gestühl",
+		"text_rna" : "Unterrichtsräume mit festem Gestühl                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "511       ",
+		"kurz_rna" : null,
+		"rna" : "Hör-\/Lehrsaal ans.Ex.bühn",
+		"text_rna" : "Hör-\/Lehrsäle ansteigend mit Experimentierbühne                                                                                                                                                                                                                ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "512       ",
+		"kurz_rna" : null,
+		"rna" : "Hör-\/Lehrsaal Ex.-bühne  ",
+		"text_rna" : "Hör-\/Lehrsäle eben mit Experimentierbühne                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "513       ",
+		"kurz_rna" : null,
+		"rna" : "Hör-\/Lehrsaal ansteigend ",
+		"text_rna" : "Hör-\/Lehrsäle ansteigend ohne Experimentierbühne                                                                                                                                                                                                               ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "514       ",
+		"kurz_rna" : null,
+		"rna" : "Hör-\/Lehrsaal            ",
+		"text_rna" : "Hör-\/Lehrsäle eben ohne Experimentierbühne                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "520       ",
+		"kurz_rna" : null,
+		"rna" : "Allg.Unterricht          ",
+		"text_rna" : "Allgemeine Unterrichts- und Übungsräume ohne festes Gestühl                                                                                                                                                                                                    ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "521       ",
+		"kurz_rna" : null,
+		"rna" : "Unterrichtsraum          ",
+		"text_rna" : "Unterrichtsräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "522       ",
+		"kurz_rna" : null,
+		"rna" : "Unterrichtsgroßraum      ",
+		"text_rna" : "Unterrichtsgroßräume                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "523       ",
+		"kurz_rna" : null,
+		"rna" : "Übungsraum               ",
+		"text_rna" : "Übungsräume                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "524       ",
+		"kurz_rna" : null,
+		"rna" : "Mehrzweckunterrichtsraum ",
+		"text_rna" : "Mehrzweck(unterrichts)-räume                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "525       ",
+		"kurz_rna" : null,
+		"rna" : "Zeichenübungsraum        ",
+		"text_rna" : "Zeichenübungsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "526       ",
+		"kurz_rna" : null,
+		"rna" : "Verhaltensbeobachtungsr. ",
+		"text_rna" : "Verhaltensbeobachtungs­räume                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "527       ",
+		"kurz_rna" : null,
+		"rna" : "Übungsraum f.darst.Kunst ",
+		"text_rna" : "Übungsräume für darstel­lende Kunst                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "530       ",
+		"kurz_rna" : null,
+		"rna" : "Besonderer Unterricht    ",
+		"text_rna" : "Besondere Unterrichts- und Übungsräume ohne festes Gestühl                                                                                                                                                                                                     ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "531       ",
+		"kurz_rna" : null,
+		"rna" : "Musik-tech.Unterrichtsr. ",
+		"text_rna" : "Musischtechnische Unterrichtsräume                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "532       ",
+		"kurz_rna" : null,
+		"rna" : "Hauswirt.Unterrichtsraum ",
+		"text_rna" : "Hauswirtschaftliche Unterrichtsräume                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "533       ",
+		"kurz_rna" : null,
+		"rna" : "Medienunt.Unterrichtsr.  ",
+		"text_rna" : "Medienunterstützte Unterrichtsräume                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "534       ",
+		"kurz_rna" : null,
+		"rna" : "Musik\/Sprechunterrichtsr.",
+		"text_rna" : "Musik-\/Sprechunterrichtsräume                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "535       ",
+		"kurz_rna" : null,
+		"rna" : "Phys\/techn. Übungsraum   ",
+		"text_rna" : "Physikalisch\/technische Übungsräume                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "536       ",
+		"kurz_rna" : null,
+		"rna" : "Naßpräp.Übungsraum       ",
+		"text_rna" : "Naßpräparative Übungsräume                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "537       ",
+		"kurz_rna" : null,
+		"rna" : "Zahnmed.Übungsraum       ",
+		"text_rna" : "Zahnmedizinische Übungsräume                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "020"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "540       ",
+		"kurz_rna" : null,
+		"rna" : "Bibliotheksraum          ",
+		"text_rna" : "Bibliotheksräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "541       ",
+		"kurz_rna" : null,
+		"rna" : "Bibliotheksraum          ",
+		"text_rna" : "Bibliotheksräume allgemein                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "542       ",
+		"kurz_rna" : null,
+		"rna" : "Leseraum                 ",
+		"text_rna" : "Leseräume                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "543       ",
+		"kurz_rna" : null,
+		"rna" : "Freihandbuchstellfläche  ",
+		"text_rna" : "Freihand(buch)stellflächen                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "544       ",
+		"kurz_rna" : null,
+		"rna" : "Katalograum              ",
+		"text_rna" : "Katalogräume\/-flächen                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "545       ",
+		"kurz_rna" : null,
+		"rna" : "Mediothekraum            ",
+		"text_rna" : "Mediothekräume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "030"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "550       ",
+		"kurz_rna" : null,
+		"rna" : "Sportraum                ",
+		"text_rna" : "Sporträume                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "551       ",
+		"kurz_rna" : null,
+		"rna" : "Halle f.Turnen u.Spiele  ",
+		"text_rna" : "Hallen für Turnen und Spiele                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "552       ",
+		"kurz_rna" : null,
+		"rna" : "Schwimmhalle             ",
+		"text_rna" : "Schwimmhallen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "553       ",
+		"kurz_rna" : null,
+		"rna" : "Eissporthalle            ",
+		"text_rna" : "Eissporthallen                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "554       ",
+		"kurz_rna" : null,
+		"rna" : "Radsporthalle            ",
+		"text_rna" : "Radsporthallen                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "555       ",
+		"kurz_rna" : null,
+		"rna" : "Reitsporthalle           ",
+		"text_rna" : "Reitsporthallen                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "556       ",
+		"kurz_rna" : null,
+		"rna" : "Sportübungsraum          ",
+		"text_rna" : "Sportübungsräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "557       ",
+		"kurz_rna" : null,
+		"rna" : "Kegelbahn                ",
+		"text_rna" : "Kegelbahnen                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "558       ",
+		"kurz_rna" : null,
+		"rna" : "Schießsportraum          ",
+		"text_rna" : "Schießsporträume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "559       ",
+		"kurz_rna" : null,
+		"rna" : "Sondersporthalle         ",
+		"text_rna" : "Sondersporthallen                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "560       ",
+		"kurz_rna" : null,
+		"rna" : "Versammlungsraum         ",
+		"text_rna" : "Versammlungsräume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "561       ",
+		"kurz_rna" : null,
+		"rna" : "Versammlungsraum         ",
+		"text_rna" : "Versammlungsräume allgemein                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "562       ",
+		"kurz_rna" : null,
+		"rna" : "Zuschauerraum            ",
+		"text_rna" : "Zuschauerräume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "563       ",
+		"kurz_rna" : null,
+		"rna" : "Mehrzweckhalle           ",
+		"text_rna" : "Mehrzweckhallen                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "010"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "570       ",
+		"kurz_rna" : null,
+		"rna" : "Bühnen-,Studioraum       ",
+		"text_rna" : "Bühnen-, Studioräume                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "571       ",
+		"kurz_rna" : null,
+		"rna" : "Bühnenraum               ",
+		"text_rna" : "Bühnenräume                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "572       ",
+		"kurz_rna" : null,
+		"rna" : "Probebühne               ",
+		"text_rna" : "Probebühnen                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "573       ",
+		"kurz_rna" : null,
+		"rna" : "Orchesterraum            ",
+		"text_rna" : "Orchesterräume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "574       ",
+		"kurz_rna" : null,
+		"rna" : "Orchesterproberaum       ",
+		"text_rna" : "Orchesterprobenräume                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "575       ",
+		"kurz_rna" : null,
+		"rna" : "Tonstudio                ",
+		"text_rna" : "Tonstudioräume                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "576       ",
+		"kurz_rna" : null,
+		"rna" : "Bildstudio               ",
+		"text_rna" : "Bildstudioräume                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "577       ",
+		"kurz_rna" : null,
+		"rna" : "Künstleratelier          ",
+		"text_rna" : "Künstlerateliers                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "050"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "580       ",
+		"kurz_rna" : null,
+		"rna" : "Schauraum                ",
+		"text_rna" : "Schauräume                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "581       ",
+		"kurz_rna" : null,
+		"rna" : "Schauraum allg.          ",
+		"text_rna" : "Schauräume allgemein                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "582       ",
+		"kurz_rna" : null,
+		"rna" : "Museumsraum              ",
+		"text_rna" : "Museumsräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "583       ",
+		"kurz_rna" : null,
+		"rna" : "Lehr-u.Schausammlungsraum",
+		"text_rna" : "Lehr- und Schausamm­lungsräume                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "584       ",
+		"kurz_rna" : null,
+		"rna" : "Besucherfläche           ",
+		"text_rna" : "Besucherflächen                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "590       ",
+		"kurz_rna" : null,
+		"rna" : "Sakralraum               ",
+		"text_rna" : "Sakralräume                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "600       ",
+		"kurz_rna" : null,
+		"rna" : "Heil-\/Pflegeraum         ",
+		"text_rna" : "Heilen und Pflegen                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "610       ",
+		"kurz_rna" : null,
+		"rna" : "Raum m.allgem.med.Ausst. ",
+		"text_rna" : "Räume mit allgemeiner me­dizinischer Ausstattung                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "611       ",
+		"kurz_rna" : null,
+		"rna" : "U+B-Raum                 ",
+		"text_rna" : "Untersuchungs- und Behandlungsräume mit einfacher med. Ausstattung (U + B - Räume)                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "612       ",
+		"kurz_rna" : null,
+		"rna" : "Erste-Hilfe-Raum         ",
+		"text_rna" : "Erste-Hilfe-Räume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "613       ",
+		"kurz_rna" : null,
+		"rna" : "Verstorbenenraum         ",
+		"text_rna" : "Verstorbenenräume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "614       ",
+		"kurz_rna" : null,
+		"rna" : "Tiermed.U+B-Raum         ",
+		"text_rna" : "Tiermed. U + B-Räume mit einfacher med. Ausstattung                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "615       ",
+		"kurz_rna" : null,
+		"rna" : "Demonstrationsraum       ",
+		"text_rna" : "Demonstrationsräume mit einfacher med. Ausstattung                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "620       ",
+		"kurz_rna" : null,
+		"rna" : "Raum m.bes.med.Ausst.    ",
+		"text_rna" : "Räume mit besonderer medizinischer Ausstattung                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "621       ",
+		"kurz_rna" : null,
+		"rna" : "Atemphysiolog.U-Raum     ",
+		"text_rna" : "Atemphysiologische Untersuchungsräume                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "622       ",
+		"kurz_rna" : null,
+		"rna" : "Herz-,Kreisl.U+B-Raum    ",
+		"text_rna" : "Herz- und Kreislaufdiagnostische Untersuchungsräume                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "623       ",
+		"kurz_rna" : null,
+		"rna" : "Neurophysiolog.U-Raum    ",
+		"text_rna" : "Neurophysiologische U + B-Räume                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "624       ",
+		"kurz_rna" : null,
+		"rna" : "Sinnesphysiolog.U+B-Raum ",
+		"text_rna" : "Sinnesphysiologische U + B-Räume                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "625       ",
+		"kurz_rna" : null,
+		"rna" : "Augen U+B-Raum           ",
+		"text_rna" : "Augen- U + B-Räume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "626       ",
+		"kurz_rna" : null,
+		"rna" : "Zahnmed. U+B-Raum        ",
+		"text_rna" : "Zahnmedizinische Untersuchungs- und Behandlungsplätze                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "627       ",
+		"kurz_rna" : null,
+		"rna" : "Tiermed. U+B-Raum        ",
+		"text_rna" : "Tiermed. U + B-Räume mit besonderer Ausstattung                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "628       ",
+		"kurz_rna" : null,
+		"rna" : "Demonstrationsraum       ",
+		"text_rna" : "Demonstrationsräume mit besonderer medizinischer Ausstattung                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "630       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.operative Eingr.  ",
+		"text_rna" : "Räume für operative Eingriffe, Endoskopien und Entbindungen                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "631       ",
+		"kurz_rna" : null,
+		"rna" : "Operationsraum           ",
+		"text_rna" : "Operationsräume                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "632       ",
+		"kurz_rna" : null,
+		"rna" : "Operationsraum bes.Ausst.",
+		"text_rna" : "Operationsräume mit Sonderausstattung                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "633       ",
+		"kurz_rna" : null,
+		"rna" : "Reanimationsraum         ",
+		"text_rna" : "Reanimations-\/Eingriffsräume                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "634       ",
+		"kurz_rna" : null,
+		"rna" : "Geburtsraum              ",
+		"text_rna" : "Geburtshilferäume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "635       ",
+		"kurz_rna" : null,
+		"rna" : "Endoskopieraum           ",
+		"text_rna" : "Endoskopieräume                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "636       ",
+		"kurz_rna" : null,
+		"rna" : "Operationsergänzungsraum ",
+		"text_rna" : "Operationsergänzungsräume                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "637       ",
+		"kurz_rna" : null,
+		"rna" : "Tiermed.Operationsraum   ",
+		"text_rna" : "Tiermedizinische Opera­tionsräume                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "640       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.Strahlendiagnostik",
+		"text_rna" : "Räume für Strahlen­diagnostik                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "641       ",
+		"kurz_rna" : null,
+		"rna" : "Röntgen-U-Raum allg.     ",
+		"text_rna" : "Röntgenuntersuchungs­räume allgemein                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "642       ",
+		"kurz_rna" : null,
+		"rna" : "Spez.Röntgen-U-Raum      ",
+		"text_rna" : "Spezielle Röntgenunter­suchungsräume                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "643       ",
+		"kurz_rna" : null,
+		"rna" : "Tomographieraum          ",
+		"text_rna" : "Tomographieräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "644       ",
+		"kurz_rna" : null,
+		"rna" : "Zahnmed.Röntgen-U-Raum   ",
+		"text_rna" : "Zahnmed. Röntgenunter­suchungsräume                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "645       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.nukl.Diagnostik   ",
+		"text_rna" : "Räume für nuklearmed. Diagnostik                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "646       ",
+		"kurz_rna" : null,
+		"rna" : "Ergänzungsr.f.nukl.Diag. ",
+		"text_rna" : "Ergänzungsräume der nu­klearmed. Diagnostik                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "647       ",
+		"kurz_rna" : null,
+		"rna" : "Ultraschalldiagnostik    ",
+		"text_rna" : "Ultraschalldiagnostikräume                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "648       ",
+		"kurz_rna" : null,
+		"rna" : "Tiermed.Strahlendiag.    ",
+		"text_rna" : "Tiermedizinische Räume für die Strahlendiagnostik                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "650       ",
+		"kurz_rna" : null,
+		"rna" : "Strahlentherapie         ",
+		"text_rna" : "Räume für die Strahlenthe­rapie                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "651       ",
+		"kurz_rna" : null,
+		"rna" : "Oberflächenbestrahlung   ",
+		"text_rna" : "Oberflächenbestrahlung                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "652       ",
+		"kurz_rna" : null,
+		"rna" : "Halbtiefen-\/Tiefenbestr. ",
+		"text_rna" : "Halbtiefen-\/Tiefenbestrahlung                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "653       ",
+		"kurz_rna" : null,
+		"rna" : "Bestrahlungsplanung      ",
+		"text_rna" : "Bestrahlungsplanung                                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "654       ",
+		"kurz_rna" : null,
+		"rna" : "Bestr.m.off.rad.Stoffen  ",
+		"text_rna" : "Bestrahlung mit offenen radioaktiven Stoffen                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "655       ",
+		"kurz_rna" : null,
+		"rna" : "Bestr.m.ums.rad.Stoffen  ",
+		"text_rna" : "Bestrahlung mit umschlossenen radioaktiven Stoffen                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "656       ",
+		"kurz_rna" : null,
+		"rna" : "Bestr.m.off.Isotopen     ",
+		"text_rna" : "Bestrahlung mit offenen Isotopen (Applikationsräume)                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "657       ",
+		"kurz_rna" : null,
+		"rna" : "Bestr.m.ums.Isotopen     ",
+		"text_rna" : "Bestrahlung mit umschlossenen Isotopen (Applikationsräume)                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "660       ",
+		"kurz_rna" : null,
+		"rna" : "Physiother.Rehabilit.    ",
+		"text_rna" : "Räume für Physiotherapie und Rehabilitation                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "661       ",
+		"kurz_rna" : null,
+		"rna" : "Med.Bäder u.Duschen      ",
+		"text_rna" : "Medizinische Bäder\/ Duschen                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "662       ",
+		"kurz_rna" : null,
+		"rna" : "Bewegungsbäder           ",
+		"text_rna" : "Bewegungsbäder                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "663       ",
+		"kurz_rna" : null,
+		"rna" : "Schwitzbäder\/Packungen   ",
+		"text_rna" : "Schwitzbäder\/Packungen                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "664       ",
+		"kurz_rna" : null,
+		"rna" : "Inhalation               ",
+		"text_rna" : "Inhalationsräume                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "665       ",
+		"kurz_rna" : null,
+		"rna" : "Bewegungstherapie        ",
+		"text_rna" : "Bewegungstherapieräume                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "666       ",
+		"kurz_rna" : null,
+		"rna" : "Massagen                 ",
+		"text_rna" : "Massageräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "667       ",
+		"kurz_rna" : null,
+		"rna" : "Elektrotherapie          ",
+		"text_rna" : "Elektrotherapieräume                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "668       ",
+		"kurz_rna" : null,
+		"rna" : "Rehabilitation           ",
+		"text_rna" : "Rehabilitationsräume allgemein                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "670       ",
+		"kurz_rna" : null,
+		"rna" : "Bettenraum               ",
+		"text_rna" : "Bettenräume mit allgemeiner Ausstattung in Kranken­häusern, Pflegeheimen, Heil- und Pflegeanstalten                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "671       ",
+		"kurz_rna" : null,
+		"rna" : "Normalpflegebettenraum   ",
+		"text_rna" : "Normalpflegebettenräume                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "672       ",
+		"kurz_rna" : null,
+		"rna" : "Infektionspflegebettenr. ",
+		"text_rna" : "Infektionspflegebetten­räume                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "673       ",
+		"kurz_rna" : null,
+		"rna" : "Psychiatr.Pflegebettenr. ",
+		"text_rna" : "Psychiatrische Pflege­bettenräume                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "674       ",
+		"kurz_rna" : null,
+		"rna" : "Neugeborenenpflegebettenr",
+		"text_rna" : "Neugeborenenpflegebetten­räume                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "675       ",
+		"kurz_rna" : null,
+		"rna" : "Säuglingspflegebettenraum",
+		"text_rna" : "Säuglingspflegebetten­räume                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "676       ",
+		"kurz_rna" : null,
+		"rna" : "Kinderpflegebettenraum   ",
+		"text_rna" : "Kinderpflegebettenräume                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "677       ",
+		"kurz_rna" : null,
+		"rna" : "Langzeitpflegebettenraum ",
+		"text_rna" : "Langzeitpflegebettenräume                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "678       ",
+		"kurz_rna" : null,
+		"rna" : "Leichtpflegebettenraum   ",
+		"text_rna" : "Leichtpflegebettenräume                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "680       ",
+		"kurz_rna" : null,
+		"rna" : "Bettenraum m.bes.Auss.   ",
+		"text_rna" : "Bettenräume mit besonderer Ausstattung                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "681       ",
+		"kurz_rna" : null,
+		"rna" : "Intensivüberwachung      ",
+		"text_rna" : "Intensivüberwachung \/ Bettenräume für ...                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "682       ",
+		"kurz_rna" : null,
+		"rna" : "Intensivbehandlung       ",
+		"text_rna" : "Intensivbehandlung \/ Bettenräume für ...                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "683       ",
+		"kurz_rna" : null,
+		"rna" : "Beh.Brandverletzter      ",
+		"text_rna" : "Behandlung Brandverletzter \/ Bettenräume für ...                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "684       ",
+		"kurz_rna" : null,
+		"rna" : "Dialyse                  ",
+		"text_rna" : "Dialyse \/Bettenräume für ...                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "685       ",
+		"kurz_rna" : null,
+		"rna" : "Reverse Isolation        ",
+		"text_rna" : "Reverse Isolation \/ Betten­räume für ...                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "686       ",
+		"kurz_rna" : null,
+		"rna" : "Pflege Frühgeborener     ",
+		"text_rna" : "Pflege Frühgeborener (Neo­natale) \/ Bettenräume für ...                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "687       ",
+		"kurz_rna" : null,
+		"rna" : "Pflege strahl.Patienten  ",
+		"text_rna" : "Pflege strahlender Patien­ten \/ Bettenräume für ...                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "688       ",
+		"kurz_rna" : null,
+		"rna" : "Pflege Querschnittsgel.  ",
+		"text_rna" : "Pflege Querschnittsgelähm­ter \/ Bettenräume für ...                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "689       ",
+		"kurz_rna" : null,
+		"rna" : "Aufwachraum              ",
+		"text_rna" : "Aufwachräume (postopera­tiv)                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "700       ",
+		"kurz_rna" : null,
+		"rna" : "Sonstige Nutzung         ",
+		"text_rna" : "Sonstige Nutzungen                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "710       ",
+		"kurz_rna" : null,
+		"rna" : "Sanitärraum              ",
+		"text_rna" : "Sanitärräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "720       ",
+		"kurz_rna" : null,
+		"rna" : "Garderobe                ",
+		"text_rna" : "Garderoben                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "730       ",
+		"kurz_rna" : null,
+		"rna" : "Abstellraum              ",
+		"text_rna" : "Abstellräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "740       ",
+		"kurz_rna" : null,
+		"rna" : "Fahrzeugabstellflächen   ",
+		"text_rna" : "Fahrzeugabstellflächen                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "750       ",
+		"kurz_rna" : null,
+		"rna" : "Fahrgastfläche           ",
+		"text_rna" : "Fahrgastflächen                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "760       ",
+		"kurz_rna" : null,
+		"rna" : "Raum f.zentrale Technik  ",
+		"text_rna" : "Räume für zentrale Technik (zur Ver- und Entsorgung anderer Bauwerke und Anlagen)                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "761       ",
+		"kurz_rna" : null,
+		"rna" : "Abwasser-Aufber.\/Beseit. ",
+		"text_rna" : "Abwasser-Aufbereitung und Beseitigung(sanlagen)                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "762       ",
+		"kurz_rna" : null,
+		"rna" : "Wasserversorgung         ",
+		"text_rna" : "Wasserversorgung(sanlagen)                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "763       ",
+		"kurz_rna" : null,
+		"rna" : "Wärmeversorgung          ",
+		"text_rna" : "Wärmeversorgung(sanlagen)                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "764       ",
+		"kurz_rna" : null,
+		"rna" : "Gas-\/Flüssigkeitsversorg.",
+		"text_rna" : "Versorgung mit Gasen und Flüssigkeiten \/ Anlagen zur ...                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "765       ",
+		"kurz_rna" : null,
+		"rna" : "Stromversorgung          ",
+		"text_rna" : "Stromversorgung(sanlagen)                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "766       ",
+		"kurz_rna" : null,
+		"rna" : "Fernmeldetechnik         ",
+		"text_rna" : "Fernmeldetechnik(anlagen)                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "767       ",
+		"kurz_rna" : null,
+		"rna" : "Luft-\/Kälteversorgung    ",
+		"text_rna" : "Luft-\/Kälteversorgung(sanlagen)                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "768       ",
+		"kurz_rna" : null,
+		"rna" : "Förderanlagen            ",
+		"text_rna" : "Förderanlagen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "769       ",
+		"kurz_rna" : null,
+		"rna" : "Sonstige Ver-\/Entsorgung ",
+		"text_rna" : "Sonstige Ver- und Entsorgung(sanlagen)                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "770       ",
+		"kurz_rna" : null,
+		"rna" : "Schutzraum               ",
+		"text_rna" : "Schutzräume                                                                                                                                                                                                                                                    ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "800       ",
+		"kurz_rna" : null,
+		"rna" : "Betriebstechnische Anlage",
+		"text_rna" : "Betriebstechnische Anlagen (Räume für betriebstech­nische Anlagen für die Ver- und Entsorgung des Bauwerks selbst)                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "810       ",
+		"kurz_rna" : null,
+		"rna" : "Abwasser\/Wasser\/Gase     ",
+		"text_rna" : "Abwasseraufbereitung und Beseitigung; Wasserversorgung; Gase und Flüssigkeiten                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "820       ",
+		"kurz_rna" : null,
+		"rna" : "Heizung\/Warmwasser       ",
+		"text_rna" : "Wärmeerzeuger, Wärmerückgewinnung, Brennstoffvorräte, Fernwärme                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "830       ",
+		"kurz_rna" : null,
+		"rna" : "Raumlufttechn. Anlagen   ",
+		"text_rna" : "Zuluftanlage, Abluftanlage, Ventilatorraum, Kältemaschine                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "840       ",
+		"kurz_rna" : null,
+		"rna" : "el. Stromversorgung      ",
+		"text_rna" : "Transformatorenraum, Notstromversorgung                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "850       ",
+		"kurz_rna" : null,
+		"rna" : "Fernmeldetechnik         ",
+		"text_rna" : "Fernmeldetechnik                                                                                                                                                                                                                                               ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "860       ",
+		"kurz_rna" : null,
+		"rna" : "Aufzugs- u. Förderanlagen",
+		"text_rna" : "Aufzugs- u. Förderanlagen                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "890       ",
+		"kurz_rna" : null,
+		"rna" : "Sonst.betriebstech.Anlage",
+		"text_rna" : "Sonstige betriebstechnische Anlagen                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "891       ",
+		"kurz_rna" : null,
+		"rna" : "Hausanschlußraum         ",
+		"text_rna" : "Hausanschlußräume                                                                                                                                                                                                                                              ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "892       ",
+		"kurz_rna" : null,
+		"rna" : "Installationsraum        ",
+		"text_rna" : "Installationsräume                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "893       ",
+		"kurz_rna" : null,
+		"rna" : "Installationsschacht     ",
+		"text_rna" : "Installationsschächte                                                                                                                                                                                                                                          ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "894       ",
+		"kurz_rna" : null,
+		"rna" : "Installationskanal       ",
+		"text_rna" : "Installationskanäle                                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "895       ",
+		"kurz_rna" : null,
+		"rna" : "Abfallverbrenungsraum    ",
+		"text_rna" : "Abfallverbrennungsräume                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "900       ",
+		"kurz_rna" : null,
+		"rna" : "Verkehrserschließung     ",
+		"text_rna" : "Verkehrserschließung und -sicherung                                                                                                                                                                                                                            ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "910       ",
+		"kurz_rna" : null,
+		"rna" : "Flure,Hallen             ",
+		"text_rna" : "Flure, Hallen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "911       ",
+		"kurz_rna" : null,
+		"rna" : "Flure allgem.            ",
+		"text_rna" : "Flure allgemein                                                                                                                                                                                                                                                ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "912       ",
+		"kurz_rna" : null,
+		"rna" : "Flur in Wohnungen        ",
+		"text_rna" : "Flure in Wohnungen                                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "913       ",
+		"kurz_rna" : null,
+		"rna" : "Vorraum                  ",
+		"text_rna" : "Vorräume                                                                                                                                                                                                                                                       ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "914       ",
+		"kurz_rna" : null,
+		"rna" : "Schleuse                 ",
+		"text_rna" : "Schleusen                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "915       ",
+		"kurz_rna" : null,
+		"rna" : "Windfang                 ",
+		"text_rna" : "Windfänge                                                                                                                                                                                                                                                      ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "916       ",
+		"kurz_rna" : null,
+		"rna" : "Eingangshalle            ",
+		"text_rna" : "Eingangshallen                                                                                                                                                                                                                                                 ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "917       ",
+		"kurz_rna" : null,
+		"rna" : "Rollsteige               ",
+		"text_rna" : "Rollsteige                                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "918       ",
+		"kurz_rna" : null,
+		"rna" : "Fluchtweg                ",
+		"text_rna" : "Fluchtwege (allseitig umschlossen)                                                                                                                                                                                                                             ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "920       ",
+		"kurz_rna" : null,
+		"rna" : "Treppe                   ",
+		"text_rna" : "Treppen                                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "921       ",
+		"kurz_rna" : null,
+		"rna" : "Treppenraum,-lauf,Rampe  ",
+		"text_rna" : "Treppenräume, -läufe, Rampen                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "922       ",
+		"kurz_rna" : null,
+		"rna" : "Treppen in Wohnungen     ",
+		"text_rna" : "Treppen in Wohnungen                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "923       ",
+		"kurz_rna" : null,
+		"rna" : "Rolltreppe,-rampe        ",
+		"text_rna" : "Rolltreppen, -rampen                                                                                                                                                                                                                                           ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "924       ",
+		"kurz_rna" : null,
+		"rna" : "Fluchtreppe              ",
+		"text_rna" : "Fluchttreppen                                                                                                                                                                                                                                                  ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "930       ",
+		"kurz_rna" : null,
+		"rna" : "Schächte f.Förderanlagen ",
+		"text_rna" : "Schächte für Förderanlagen                                                                                                                                                                                                                                     ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "940       ",
+		"kurz_rna" : null,
+		"rna" : "Fahrzeugverkehrsfläche   ",
+		"text_rna" : "Fahrzeugverkehrsflächen                                                                                                                                                                                                                                        ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "931       ",
+		"kurz_rna" : null,
+		"rna" : "Aufzug                   ",
+		"text_rna" : "Aufzug                                                                                                                                                                                                                                                         ",
+		"rnaber_nr" : "090"
+	},
+	{
+		"db_einfuegemarke" : null,
+		"rna_nr" : "732       ",
+		"kurz_rna" : null,
+		"rna" : "Abstellraum              ",
+		"text_rna" : "Abstellräume                                                                                                                                                                                                                                                   ",
+		"rnaber_nr" : "090"
+	}
+]}

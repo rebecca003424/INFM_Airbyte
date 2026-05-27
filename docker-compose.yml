@@ -1,0 +1,79 @@
+# Alle Custom-Datenbanken laufen in diesem Netzwerk.
+# Airbyte wird separat gestartet (siehe docs/airbyte-setup.md)
+# und verbindet sich über dieses externe Netzwerk mit den DBs.
+networks:
+  airbyte_net:
+    name: airbyte_net
+    driver: bridge
+
+services:
+
+  # ─── SOURCE: PostgreSQL mit vorgeladenen Testdaten ────────────────────────
+  source-postgres:
+    image: postgres:15-alpine
+    container_name: hso_source_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${SOURCE_PG_DB:-sourcedb}
+      POSTGRES_USER: ${SOURCE_PG_USER:-sourceuser}
+      POSTGRES_PASSWORD: ${SOURCE_PG_PASSWORD:-sourcepassword}
+    volumes:
+      - source_pg_data:/var/lib/postgresql/data
+      - ./sql/source:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5433:5432"
+    networks:
+      - airbyte_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${SOURCE_PG_USER:-sourceuser} -d ${SOURCE_PG_DB:-sourcedb}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── DESTINATION: PostgreSQL (leer, Airbyte schreibt hierhin) ─────────────
+  dest-postgres:
+    image: postgres:15-alpine
+    container_name: hso_dest_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DEST_PG_DB:-destdb}
+      POSTGRES_USER: ${DEST_PG_USER:-destuser}
+      POSTGRES_PASSWORD: ${DEST_PG_PASSWORD:-destpassword}
+    volumes:
+      - dest_pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - airbyte_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DEST_PG_USER:-destuser} -d ${DEST_PG_DB:-destdb}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── DESTINATION: MySQL (leer, Airbyte schreibt hierhin) ──────────────────
+  dest-mysql:
+    image: mysql:8.0
+    container_name: hso_dest_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DEST_MYSQL_DB:-destdb}
+      MYSQL_USER: ${DEST_MYSQL_USER:-destuser}
+      MYSQL_PASSWORD: ${DEST_MYSQL_PASSWORD:-destpassword}
+    volumes:
+      - dest_mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - airbyte_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  source_pg_data:
+  dest_pg_data:
+  dest_mysql_data:

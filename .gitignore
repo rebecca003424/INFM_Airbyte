@@ -1,0 +1,30 @@
+# Secrets – niemals committen!
+.env
+
+# Airbyte lokale Daten & Logs (werden von abctl/compose angelegt)
+airbyte/
+.airbyte/
+
+# Große Datendateien
+data.zip
+*.dump
+*.bak
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp

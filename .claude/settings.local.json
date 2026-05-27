@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import zipfile; z = zipfile.ZipFile\\('data.zip'\\); print\\('\\\\n'.join\\(z.namelist\\(\\)\\)\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python)",
+      "Bash(docker compose *)",
+      "Bash(docker --version)",
+      "Bash(git --version)"
+    ]
+  }
+}

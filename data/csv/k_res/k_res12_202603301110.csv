@@ -1,0 +1,65 @@
+"res12";"aikz";"ktxt";"dtxt";"ltxt"
+CS;A;CSE       ;Communication Systems Eng;Communication Systems Engineering                 
+AE;A;AE        ;Anwendungsentwicklung    ;Anwendungsentwicklung                             
+AM;A;AME       ;Automotive Engineering   ;Automotive Engineering                            
+AS;A;AS        ;Autonome Systeme         ;Autonome Systeme                                  
+AU;A;AU        ;Automation               ;Automation                                        
+B ;A;B         ;B                        ;B                                                 
+BP;A;MPE       ;Biotechnical Processes   ;Biotechnical Processes                            
+C ;A;C         ;Controlling              ;Controlling                                       
+CF;A;BW-CF     ;Controlling und Finanzen ;Controlling und Finanzen                          
+CR;A;BWM-CR    ;Controlling & Risikomanag;Controlling & Risikomanagement                    
+D ;A;D         ;Fachdidaktik             ;Fachdidaktik                                      
+DE;A;BWM-DE    ;Direktmarketing & E-Comme;Direktmarketing & E-Commerce                      
+DF;A;DF        ;Deutsch-Franz.           ;Deutsch-Franz.                                    
+DT;A;DT        ;Data Transmission        ;Data Transmission                                 
+E ;A;VT-E      ;Energietechnik           ;Energietechnik                                    
+EA;A;EA        ;Energie- und Automatisier;Energie- und Automatisierungstechnik              
+EK;A;MEK       ;Entwicklung und Konstrukt;Entwicklung und Konstruktion                      
+EN;A;MES       ;Energiesystemtechnik     ;Energiesystemtechnik                              
+ES;A;ES        ;Embedded Systems         ;Embedded Systems                                  
+ET;A;ET        ;Energietechnik           ;Energietechnik                                    
+EU;A;EU        ;Energietechnik/Umwelttech;Energietechnik / Umwelttechnik                    
+EV;A;EV        ;Energieversorgung        ;Energieversorgung                                 
+F ;A;F         ;Fertigung                ;Fertigung                                         
+FM;A;FM        ;Fahrzeugmechatronik      ;Fahrzeugmechatronik und Elektromobilität          
+FT;A;FT        ;Fertigungstechnik        ;Fertigungstechnik                                 
+GT;A;GT        ;Geotechnics              ;Geotechnics                                       
+HA;A;HAN       ;Handel                   ;Handel                                            
+HF;A;HF        ;Hochfrequenztechnik      ;Hochfrequenztechnik                               
+I ;A;I         ;Angew. Informatik        ;Angewandte Informatik                             
+IK;A;IK        ;IK                       ;IK                                                
+IM;A;IM        ;Industr Mechatronik      ;Industrielle Mechatronik und Robotik              
+IP;A;IP        ;IP                       ;IP                                                
+K ;A;K         ;Konstruktion             ;Konstruktion                                      
+KM;A;KMU       ;Klein-/Mittelunternehmen ;Klein- und Mittelunternehmen                      
+KT;A;KT        ;Kommunikationstechnik    ;Kommunikationstechnik                             
+KV;A;KV        ;Komm. u. Vert. Systeme   ;Kommunikation und Verteilte Systeme               
+L1;A;BWM-LP    ;Lean Production          ;Lean Production                                   
+LO;A;LO        ;Logistik                 ;Logistik                                          
+LP;A;LP        ;Lean Manufacturing       ;Lean Manufacturing                                
+M ;A;M         ;Marketing                ;Marketing                                         
+MD;A;MDE       ;Mechanical Design        ;Mechanical Design                                 
+MM;A;MM        ;Multimedia Techn.& Design;Multimedia Techniques and Design                  
+MV;A;BW-MV     ;Marketing und Vertrieb   ;Marketing und Vertrieb                            
+OE;A;OE        ;Optoelektronik           ;Optoelektronik                                    
+P ;A;P         ;Produktion               ;Produktion                                        
+PM;A;MPM       ;Produktion und Management;Produktion und Management                         
+R ;I;R         ;Rechnungswesen           ;Rechnungswesen                                    
+RB;A;RB        ;Robotik                  ;Robotilk                                          
+RE;A;REC       ;Renewable Energy Conversi;Renewable Energy Conversion                       
+SB;A;SBP       ;Simulation and Visualisat;Simulation and Visualisation of Biotechnical Proce
+ST;A;ST        ;System- u. Informationste;System- und Informationstechnik                   
+SV;A;SV        ;Signalverarbeitung       ;Signalverarbeitung                                
+TB;A;TB        ;Techn. Betriebswirtschaft;Technische Betriebswirtschaft                     
+TG;A;TG        ;Techn. Gebäudeausr.      ;Technische Gebäudeausrüstung                      
+TH;A;TH        ;Techn. Gebäudeausr Heiz  ;Technische Gebäudeausrüstung - Heizungstechnik    
+TL;A;TL        ;Techn. Gebäudeausr Lüft  ;Technische Gebäudeausrüstung - Lüftung            
+TT;A;TT        ;Thermal Treatment        ;Thermal Treatment                                 
+U ;A;VT-U      ;Umwelttechnik            ;Umwelttechnik                                     
+UG;A;UG        ;Unternehmensgründung und ;Unternehmensgründung und Bewertung                
+WI;A;WI        ;Wirtschaftsinformatik    ;Wirtschaftsinformatik                             
+WN;A;BWM-WI    ;Wirtschaftsinformatik    ;Wirtschaftsinformatik                             
+WT;A;MWT       ;Werkstofftechnik         ;Werkstofftechnik                                  
+EM;A;EM        ;Elektromobilität         ;Elektromobilität                                  
+AT;A;AT        ;Automatisierungstechnik  ;Automatisierungstechnik                           

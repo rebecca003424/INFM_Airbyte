@@ -1,0 +1,27 @@
+,0101,GebÃ¤ude A,VerwaltungsgebÃ¤ude,1970,0,1,011,6800,1.00,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,,A
+,0102,GebÃ¤ude C,Maschinenlaborgeb.,1976,0,1,011,6800,1.00,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,,C
+,0103,GebÃ¤ude B1,HÃ¶rsÃ¤le,Bib.,RZ,1978,0,1,011,6800,1.00,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,,B
+,0104,Steinbeis-GebÃ¤ude,,1993,1,1,011,6800,1.00,0,,,77652,00001,24a,0011,OG,Offenburg,0.00,,,,,,STB
+,0105,GebÃ¤ude B2,Laborgeb. Chemie,1995,0,1,011,6800,1.00,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,,B
+,0201,AV-Studio Ohlsbach,,1998,1,3,012,6800,99,0,,,77797,00002,2,0012,Ohl,Ohlsbach,0.00,,,,,,
+,0301,Gengenbach Kloster,,1812,0,1,013,6800,1.00,0,70,,77723,00003,14,0013,Ggb,Gengenbach,0.00,,,,,,GK
+,0302,Gengenbach Bibliothek,,1998,1,3,013,6800,1.00,0,70,,77723,00003,9,0013,Ggb,Gengenbach,0.00,,,,,,GVBib
+,0401,Mensa,,1981,0,1,011,6800,99,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,,
+,0501,Technologiepark,,2002,1,1,011,6800,99,,,0,77652,00004,12,0011,OG,Offenburg,0.00,,,,,,
+db_einfuegemarke,geb_nr,geb,geb2,baujahr,besitz,art,gebber_nr,hs_nr,qkz,fnw,pers_nr,denkmal_nr,ort_nr,stra_nr,haus_nr,gemark_nr,flur_nr,flurst_nr,miete,bauwerk,b_grad,l_grad,bem,text_geb,kurz_geb
+,0106,GebÃ¤ude OkenstraÃe,,1900,1,1,011,6800,99,0,,,77652,00005,29,0011,OG,Offenburg,0.00,,,,,,
+,0107,GebÃ¤ude D,Studiogeb.,2009,0,1,011,6800,1.00,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,,D
+,0502,Technologiepark,,2002,1,1,011,6800,99,,,0,77652,00004,10,0011,OG,Offenburg,0.00,,,,,,
+,0108,Dietrich-GebÃ¤ude,,0000,1,1,011,6800,99,0,,,77652,00006,1a,0011,OG,Offenburg,0.00,,,,,Campus Nord,
+,0303,Gengenbach ANTZ,,0000,1,1,013,6800,99,0,70,,77723,00007,21,0013,Ggb,Gengenbach,0.00,,,,,,
+,0109,GebÃ¤ude E,Seminargeb.,2014,0,1,011,6800,1.00,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,,E
+,0304,Gengenbach Vorbeck,Vorbeck,0000,1,1,013,6800,1.00,0,70,,77723,00003,9,0013,Ggb,Gengenbach,6.00,,,,,,GV
+,0601,Kunstschule Atelier,,0000,1,3,011,6800,1.00,,,0,77654,00008,34b,0011,KUN,Offenburg,0.00,,,,,,K
+,0305,Gengenbach Gemeindesaal,,0000,1,1,013,6800,99,0,70,,77723,00003,20,0013,Ggb,Gengenbach,6.00,,,,,,
+,0306,Gengenbach Feuerwehrhaus,,0000,1,1,013,6800,99,0,70,,77723,00009,5,0013,Ggb,Gengenbach,6.00,,,,,FeuerwehrgerÃ¤tehaus GB,
+db_einfuegemarke,geb_nr,geb,geb2,baujahr,besitz,art,gebber_nr,hs_nr,qkz,fnw,pers_nr,denkmal_nr,ort_nr,stra_nr,haus_nr,gemark_nr,flur_nr,flurst_nr,miete,bauwerk,b_grad,l_grad,bem,text_geb,kurz_geb
+,0307,Gengenb. Bildungs Campus,,2013,1,1,013,6800,1.00,0,70,,77723,00010,26,0013,Ggb,Gengenbach,0.00,,,,,,GB
+,0110,Peter-Osypka-Institut,Medizintechnik GebÃ¤ude,2017,0,1,011,6800,1.00,0,,,77652,00001,24,0011,OG,Offenburg,0.00,,,,,Peter-Osypka-Institut fÃ¼r Medizintechnik,POIM
+,0111,RIZ Energie,Energietechnik GebÃ¤ude,2020,0,1,011,6800,1.00,0,,,77652,00001,22a,0011,OG,Offenburg,0.00,,,,,Regionales Innovationszentrum ForschungsgebÃ¤ude,RIZ
+,0112,Campus West,,0000,1,1,011,6800,1.00,0,,,77656,00011,1,0011,OG,Offenburg,0.00,,,,,Campus West,CW
+,0308,Gengenbach SchwedenstraÃe,,0000,1,1,013,6800,1.00,0,70,,77723,00012,7,0013,Ggb,Gengenbach,0.00,,,,,,GS
