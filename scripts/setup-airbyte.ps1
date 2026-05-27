@@ -186,7 +186,7 @@ Write-Host "    UI:  http://localhost:8000" -ForegroundColor White
 Write-Host ""
 Write-Host "  DB-Verbindung in Airbyte (host.docker.internal verwenden!):" -ForegroundColor Cyan
 Write-Host "    Source PG  ->  Host: host.docker.internal  Port: 5433" -ForegroundColor White
-Write-Host "    Dest   PG  ->  Host: host.docker.internal  Port: 5432" -ForegroundColor White
+Write-Host "    Dest   PG  ->  Host: host.docker.internal  Port: 5434" -ForegroundColor White
 Write-Host "    Dest MySQL ->  Host: host.docker.internal  Port: 3306" -ForegroundColor White
 Write-Host ""
 Write-Host "  Naechste Schritte: docs\airbyte-setup.md" -ForegroundColor Cyan

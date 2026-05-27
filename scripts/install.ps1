@@ -94,7 +94,19 @@ if (Test-Path ".env") {
     Write-Warn "Passwoerter bei Bedarf in .env anpassen (aktuell: Standardwerte)."
 }
 
-# --- 3. Docker-Images laden --------------------------------------------------
+# --- 3. oss_local_root Volume sicherstellen ----------------------------------
+
+Write-Step "Docker-Volume oss_local_root vorbereiten"
+
+$volExists = docker volume ls --format "{{.Name}}" 2>$null | Where-Object { $_ -eq "oss_local_root" }
+if ($volExists) {
+    Write-Ok "oss_local_root existiert bereits."
+} else {
+    docker volume create oss_local_root | Out-Null
+    Write-Ok "oss_local_root erstellt (wird von file-server und spaeter Airbyte genutzt)."
+}
+
+# --- 4. Docker-Images laden --------------------------------------------------
 
 Write-Step "Docker-Images herunterladen (dauert beim ersten Mal ca. 2 Minuten)"
 
@@ -105,7 +117,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Ok "Images bereit."
 
-# --- 4. Stack starten --------------------------------------------------------
+# --- 5. Stack starten --------------------------------------------------------
 
 Write-Step "Datenbank-Stack starten"
 
@@ -117,11 +129,11 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Ok "Container gestartet."
 
-# --- 5. Auf healthy warten ---------------------------------------------------
+# --- 6. Auf healthy warten ---------------------------------------------------
 
 Write-Step "Warte bis alle Container healthy sind..."
 
-$services   = @("hso_source_postgres", "hso_dest_postgres", "hso_dest_mysql")
+$services   = @("hso_source_postgres", "hso_dest_postgres", "hso_dest_mysql", "hso_fileserver")
 $maxWaitSec = 120
 $interval   = 5
 $elapsed    = 0
@@ -151,15 +163,20 @@ if ($elapsed -ge $maxWaitSec) {
     }
 }
 
-# --- 6. Ergebnis und naechste Schritte ---------------------------------------
+# --- 7. Ergebnis und naechste Schritte ---------------------------------------
 
 Write-Host ""
 Write-Host "  ===================================================" -ForegroundColor DarkGray
 Write-Host "  Stack laeuft. Verbindungsparameter:" -ForegroundColor Green
 Write-Host ""
 Write-Host "    Source  PostgreSQL  ->  localhost:5433  (sourcedb / sourceuser)" -ForegroundColor White
-Write-Host "    Dest    PostgreSQL  ->  localhost:5432  (destdb   / destuser  )" -ForegroundColor White
+Write-Host "    Dest    PostgreSQL  ->  localhost:5434  (destdb   / destuser  )" -ForegroundColor White
 Write-Host "    Dest    MySQL       ->  localhost:3306  (destdb   / destuser  )" -ForegroundColor White
+Write-Host "    File    Server      ->  localhost:8888  (CSV-Flatfiles)" -ForegroundColor White
+Write-Host ""
+Write-Host "  Airbyte File Connector:" -ForegroundColor Cyan
+Write-Host "    HTTP:  http://host.docker.internal:8888/<datei>.csv" -ForegroundColor White
+Write-Host "    Local: /local/<datei>.csv  (nach oss_local_root-Copy oben)" -ForegroundColor White
 Write-Host ""
 Write-Host "  Naechster Schritt: Airbyte starten" -ForegroundColor Cyan
 Write-Host "    .\scripts\setup-airbyte.ps1" -ForegroundColor White
