@@ -123,10 +123,19 @@ In der Airbyte UI: **Sources** -> **New Source** -> **PostgreSQL**
 |------|------|
 | Destination name | `HSO Dest PostgreSQL` |
 | Host | `host.docker.internal` |
-| Port | `5432` |
+| Port | `5434` |
 | Database | `destdb` |
 | Username | `destuser` |
 | Password | `destpassword` |
+| SSL mode | `disable` |
+
+> **Warum Port 5434 statt 5432?**
+> Port 5432 ist der PostgreSQL-Standardport. Auf vielen Windows-Rechnern laeuft bereits
+> eine native PostgreSQL-Installation als Windows-Dienst (`postgres.exe`) auf diesem Port.
+> Da Docker Desktop seine Port-Mappings ueber denselben Host-Port legt, wuerde eine externe
+> Verbindung via `host.docker.internal:5432` an den nativen PostgreSQL-Dienst weitergeleitet
+> statt an unseren Container — Authentifizierung schlaegt dann fehl.
+> Port **5434** umgeht diesen Konflikt zuverlaessig.
 
 ### Destination: MySQL
 
@@ -140,10 +149,55 @@ In der Airbyte UI: **Sources** -> **New Source** -> **PostgreSQL**
 | Database | `destdb` |
 | Username | `destuser` |
 | Password | `destpassword` |
+| SSL Connection | **aus** (Toggle off) |
+| JDBC URL Params | `allowPublicKeyRetrieval=true` |
+| Raw table database | `destdb` |
+
+> **Wichtige Hinweise fuer MySQL 8.0:**
+> - **SSL ausschalten** - sonst schlaegt der Verbindungstest mit SSL-Handshake-Fehler fehl.
+> - **JDBC URL Params** benoetigt `allowPublicKeyRetrieval=true` fuer die caching_sha2_password-Authentifizierung.
+> - **Raw table database** muss auf `destdb` gesetzt werden. Leer lassen wuerde `airbyte_internal` als separate Datenbank anlegen, auf die `destuser` keinen Zugriff hat.
+> - Der MySQL-Container startet mit `--local-infile=1` (in `docker-compose.yml`), da Airbyte dieses Flag zum Laden von Daten benoetigt.
 
 ---
 
-## 7. Connection anlegen und Sync starten
+## 7. Source: CSV-Flatfiles (File Connector)
+
+Der Airbyte File Connector liest CSV-Dateien aus dem Docker-Volume `oss_local_root`.
+Die Dateien werden automatisch beim Stackstart durch den `hso_fileserver`-Container dorthin kopiert.
+
+**Sources** -> **New Source** -> **File (CSV, JSON, Excel, Feather, Parquet)**
+
+### Konfiguration (gilt fuer alle CSV-Dateien)
+
+| Feld | Wert |
+|------|------|
+| **Storage Provider** | `local: Local Filesystem (limited)` |
+| **URL** | `/local/<dateiname>.csv` |
+
+### Verfuegbare Dateien
+
+| Dataset Name | URL | Reader Options |
+|---|---|---|
+| `k_plz` | `/local/k_plz.csv` | `{"sep": ","}` |
+| `fm_gebaeude` | `/local/fm_gebaeude.csv` | `{"sep": ","}` |
+| `fm_inst` | `/local/fm_inst.csv` | `{"sep": ";"}` |
+| `hso_students` | `/local/hso_students.csv` | `{"sep": "\|"}` |
+
+> **Warum `local` und nicht `HTTPS: Public Web`?**
+> Der `source-file`-Connector (v0.6.0) erzwingt bei `HTTPS: Public Web` immer eine
+> TLS-Verbindung - auch wenn die URL mit `http://` beginnt. Der Connector mountet
+> das Volume `oss_local_root` automatisch als `/local/` ein, daher ist `local` die
+> zuverlaessige Loesung fuer lokale Dateien.
+
+> **Dateien manuell aktualisieren** (falls neue CSVs hinzugefuegt wurden):
+> ```powershell
+> docker run --rm -v oss_local_root:/local -v "PFAD\sql\source\data":/source:ro alpine sh -c "cp /source/*.csv /local/"
+> ```
+
+---
+
+## 8. Connection anlegen und Sync starten
 
 1. **Connections** -> **New Connection**
 2. Source und Destination auswaehlen
@@ -187,6 +241,7 @@ Remove-Item -Recurse "$env:USERPROFILE\.airbyte\abctl"
 | Service | Fuer DB-Tools (lokal) | Fuer Airbyte (in der UI) |
 |---------|----------------------|--------------------------|
 | Source PostgreSQL | `localhost:5433` | `host.docker.internal:5433` |
-| Dest PostgreSQL | `localhost:5432` | `host.docker.internal:5432` |
+| Dest PostgreSQL | `localhost:5434` | `host.docker.internal:5434` |
 | Dest MySQL | `localhost:3306` | `host.docker.internal:3306` |
+| File Server (HTTP) | `http://localhost:8888` | `/local/<datei>.csv` (local Storage) |
 | Airbyte UI | http://localhost:8000 | - |

@@ -193,8 +193,8 @@ docker logs hso_source_postgres --tail 50
 docker logs hso_dest_mysql --tail 50
 ```
 
-Häufige Ursachen:
-- **Port belegt:** Ein anderer Dienst nutzt Port 5432, 5433 oder 3306. In `.env` und `docker-compose.yml` anderen Port eintragen.
+Haeufige Ursachen:
+- **Port belegt:** Ein anderer Dienst nutzt Port 5433, 5434 oder 3306. In `.env` und `docker-compose.yml` anderen Port eintragen.
 - **Volumes aus altem Start:** `.\scripts\stop.ps1 -v` → dann neu starten
 
 ### Airbyte laeuft nicht / UI nicht erreichbar
@@ -221,11 +221,29 @@ docker run --rm alpine nslookup host.docker.internal
 
 # DB-Port vom Host aus pruefen
 Test-NetConnection -ComputerName localhost -Port 5433  # Source PG
-Test-NetConnection -ComputerName localhost -Port 5432  # Dest PG
+Test-NetConnection -ComputerName localhost -Port 5434  # Dest PG
 Test-NetConnection -ComputerName localhost -Port 3306  # Dest MySQL
 ```
 
 Falls die Ports nicht erreichbar sind: DB-Stack laeuft nicht → `.\scripts\start.ps1`
+
+### Airbyte: Passwortfehler bei Dest PostgreSQL (password authentication failed)
+
+Ursache: Auf Port 5432 laeuft bereits ein nativer Windows-PostgreSQL-Dienst (`postgres.exe`).
+Externe Verbindungen via `host.docker.internal:5432` landen dort statt bei `hso_dest_postgres`.
+
+Pruefen ob ein zweiter Prozess auf Port 5432 lauscht:
+
+```powershell
+netstat -ano | findstr :5432
+# Wenn zwei verschiedene PIDs erscheinen:
+tasklist /fi "PID eq <pid>"   # postgres.exe = nativer Windows-Dienst
+```
+
+**Loesung:** Dest PostgreSQL laeuft deshalb auf Port **5434** (statt 5432).
+In der Airbyte UI immer Port `5434` verwenden.
+
+---
 
 ### Testdaten wurden nicht geladen (source-postgres ist leer)
 
@@ -250,7 +268,7 @@ pip install requests psycopg2-binary
 | Service | Für DB-Tools (lokal) | Für Airbyte (in der UI eintragen) |
 |---------|----------------------|-----------------------------------|
 | Source PostgreSQL | `localhost:5433` | `host.docker.internal:5433` |
-| Dest PostgreSQL | `localhost:5432` | `host.docker.internal:5432` |
+| Dest PostgreSQL | `localhost:5434` | `host.docker.internal:5434` |
 | Dest MySQL | `localhost:3306` | `host.docker.internal:3306` |
 | Airbyte UI | http://localhost:8000 | – |
 | PostgREST (Szenario 6) | http://localhost:3000 | – |

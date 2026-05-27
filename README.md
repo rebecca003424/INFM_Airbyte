@@ -8,20 +8,20 @@
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Docker Desktop                        │
-│                                                          │
+│                    Docker Desktop                       │
+│                                                         │
 │  ┌──────────────────┐        ┌───────────────────────┐  │
-│  │  source-postgres  │        │       Airbyte         │  │
-│  │  (Testdaten)      │◄──────►│  UI: localhost:8000   │  │
-│  │  localhost:5433   │        │  API: localhost:8001  │  │
+│  │  source-postgres │        │       Airbyte         │  │
+│  │  (Testdaten)     │◄──────►│  UI: localhost:8000   │  │
+│  │  localhost:5433  │        │  API: localhost:8001  │  │
 │  └──────────────────┘        └────────┬──────────────┘  │
-│                                        │                  │
+│                                       │                 │
 │  ┌──────────────────┐  ┌──────────────▼────────────┐    │
-│  │   dest-mysql      │  │     dest-postgres          │   │
-│  │   localhost:3306  │  │     localhost:5432         │   │
+│  │   dest-mysql     │  │     dest-postgres         │    │
+│  │   localhost:3306 │  │     localhost:5432        │    │
 │  └──────────────────┘  └───────────────────────────┘    │
-│                                                          │
-│  Netzwerk: airbyte_net (alle Container verbunden)        │
+│                                                         │
+│  Netzwerk: airbyte_net (alle Container verbunden)       │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -63,7 +63,7 @@
 ### Schritt 2: Repo klonen
 
 ```powershell
-git clone <repo-url>
+git clone https://github.com/Timbo3399/INFM_Airbyte.git
 cd INFM_Airbyte
 ```
 
