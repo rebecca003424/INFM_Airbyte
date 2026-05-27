@@ -25,7 +25,8 @@ docker compose up -d --build
 Write-Host ""
 Write-Host "==> Stack laeuft. Verbindungsinfos:" -ForegroundColor Green
 Write-Host "   Source  PostgreSQL : localhost:5433  (sourcedb / sourceuser)" -ForegroundColor White
-Write-Host "   Dest    PostgreSQL : localhost:5432  (destdb   / destuser  )" -ForegroundColor White
+Write-Host "   Dest    PostgreSQL : localhost:5434  (destdb   / destuser  )" -ForegroundColor White
 Write-Host "   Dest    MySQL      : localhost:3306  (destdb   / destuser  )" -ForegroundColor White
+Write-Host "   File    Server     : localhost:8888  (CSV-Flatfiles)" -ForegroundColor White
 Write-Host ""
 Write-Host "==> Naechster Schritt: Airbyte starten (siehe docs\airbyte-setup.md)" -ForegroundColor Cyan

@@ -91,6 +91,18 @@ abctl local credentials --password MeinNeuesPasswort123
 
 ## 5. Sources konfigurieren
 
+### Uebersicht aller Sources
+
+| Name in Airbyte | Typ | Verbindung |
+|-----------------|-----|-----------|
+| `HSO Source PostgreSQL` | PostgreSQL | `host.docker.internal:5433` |
+| `HSO CSV k_plz` | File (local) | `/local/k_plz.csv` |
+| `HSO CSV fm_gebaeude` | File (local) | `/local/fm_gebaeude.csv` |
+| `HSO CSV fm_inst` | File (local) | `/local/fm_inst.csv` |
+| `HSO CSV hso_students` | File (local) | `/local/hso_students.csv` |
+
+---
+
 ### Source: PostgreSQL (Testdaten)
 
 In der Airbyte UI: **Sources** -> **New Source** -> **PostgreSQL**
@@ -138,6 +150,15 @@ Nach erfolgreichem Setup sind folgende Streams verfuegbar:
 ---
 
 ## 6. Destinations konfigurieren
+
+### Uebersicht aller Destinations
+
+| Name in Airbyte | Typ | Verbindung |
+|-----------------|-----|-----------|
+| `HSO Dest PostgreSQL` | PostgreSQL | `host.docker.internal:5434` |
+| `HSO Dest MySQL` | MySQL | `host.docker.internal:3306` |
+
+---
 
 ### Destination: PostgreSQL
 

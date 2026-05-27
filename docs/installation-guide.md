@@ -62,16 +62,18 @@ Das Installations-Skript übernimmt alles automatisch:
 ```
 
 Das Skript:
-- prüft alle Voraussetzungen (Docker, Git, Python)
+- prueft alle Voraussetzungen (Docker, Git, Python)
 - erstellt `.env` aus `.env.example`
-- lädt Docker-Images herunter
-- startet die drei Datenbank-Container
-- wartet bis alle Container gesund sind
+- erstellt Docker-Volume `oss_local_root` (fuer CSV-Dateien)
+- laedt Docker-Images herunter
+- startet alle vier Container (source-postgres, dest-postgres, dest-mysql, file-server)
+- wartet bis alle Container healthy sind
+- laedt JSON-Daten in source-postgres (`fm_rna`, `hso_personal`)
 - zeigt Verbindungsinfos an
 
 **Erfolgreich, wenn die Ausgabe endet mit:**
 ```
-✓ Stack läuft. Alle Container sind healthy.
+Stack laeuft. Verbindungsparameter: ...
 ```
 
 Danach weiter mit [Schritt 5: Airbyte aufsetzen](#5-airbyte-aufsetzen).
@@ -167,7 +169,7 @@ Weitere Details: [docs/airbyte-setup.md](airbyte-setup.md)
 |------|------|
 | Destination name | `HSO Dest PostgreSQL` |
 | Host | `host.docker.internal` |
-| Port | `5432` |
+| Port | `5434` |
 | Database | `destdb` |
 | Username | `destuser` |
 | Password | `destpassword` |
