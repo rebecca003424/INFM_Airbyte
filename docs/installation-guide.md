@@ -101,26 +101,37 @@ docker compose ps
 
 ## 5. Airbyte aufsetzen
 
-Airbyte wird **außerhalb des Repos** in einem eigenen Verzeichnis betrieben:
+Airbyte laeuft ueber `abctl` (offizielles Airbyte CLI) in einem lokalen Kubernetes-Cluster (Kind) innerhalb von Docker Desktop.
 
 ```powershell
 .\scripts\setup-airbyte.ps1
 ```
 
 Das Skript:
-- erstellt `C:\tools\airbyte\`
-- lädt die offizielle Airbyte `docker-compose.yaml` herunter
-- hängt das gemeinsame Netzwerk `airbyte_net` ein
-- startet den Airbyte-Stack
+- laedt `abctl.exe` nach `C:\tools\airbyte\` und fuegt es zum PATH hinzu
+- fragt nach Low-Resource-Mode (empfohlen bei weniger als 6 GB freiem RAM)
+- startet `abctl local install` (interaktiv: E-Mail + Organisations-Name eingeben)
+- zeigt die Login-Credentials an
 
-Warten bis alle Airbyte-Container healthy sind (~3–5 Minuten):
+Die Installation dauert **5–10 Minuten** (Container-Downloads).
+
+**Status pruefen:**
 
 ```powershell
-docker ps --filter "name=airbyte" --format "table {{.Names}}\t{{.Status}}"
+abctl local status
 ```
 
-**Airbyte UI öffnen:** http://localhost:8000  
-**Login:** `airbyte` / `password`
+**Airbyte UI oeffnen:** http://localhost:8000
+
+**Login-Credentials anzeigen:**
+
+```powershell
+abctl local credentials
+```
+
+> Ausgabe zeigt E-Mail, generiertes Passwort, Client-ID und Client-Secret.
+
+Weitere Details: [docs/airbyte-setup.md](airbyte-setup.md)
 
 ---
 
@@ -130,7 +141,7 @@ docker ps --filter "name=airbyte" --format "table {{.Names}}\t{{.Status}}"
 
 1. Airbyte UI → **Sources** → `+ New Source`
 2. Typ: **PostgreSQL**
-3. Felder ausfüllen:
+3. Felder ausfuellen:
 
 | Feld | Wert |
 |------|------|
@@ -142,8 +153,10 @@ docker ps --filter "name=airbyte" --format "table {{.Names}}\t{{.Status}}"
 | Password | `sourcepassword` |
 | SSL mode | `disable` |
 
-4. **Test connection** → sollte grün werden
+4. **Test connection** → sollte gruen werden
 5. **Set up source**
+
+> **Warum `host.docker.internal`?** Airbybes Connector-Container laufen in Kind (Kubernetes in Docker) und erreichen den Host-Rechner ueber diesen DNS-Namen.
 
 ### Destination anlegen (PostgreSQL Ziel)
 
@@ -164,9 +177,9 @@ docker ps --filter "name=airbyte" --format "table {{.Names}}\t{{.Status}}"
 1. **Connections** → `+ New Connection`
 2. Source: `HSO Source PostgreSQL`
 3. Destination: `HSO Dest PostgreSQL`
-4. Streams auswählen: `fm_gebaeude`, `hso_students`, `k_plz`
-5. Sync mode: **Full refresh | Overwrite**
-6. **Save and sync** → Ergebnis im Dashboard beobachten
+4. Streams auswaehlen: `fm_gebaeude`, `hso_students`, `k_plz`
+5. Sync mode: **Full Refresh | Overwrite**
+6. **Save and sync now** → Ergebnis im Dashboard beobachten
 
 ---
 
@@ -184,22 +197,35 @@ Häufige Ursachen:
 - **Port belegt:** Ein anderer Dienst nutzt Port 5432, 5433 oder 3306. In `.env` und `docker-compose.yml` anderen Port eintragen.
 - **Volumes aus altem Start:** `.\scripts\stop.ps1 -v` → dann neu starten
 
-### Airbyte-Container können DBs nicht erreichen
-
-Airbyte-Connector-Container kommunizieren über `host.docker.internal` mit den Datenbanken. Prüfen:
+### Airbyte laeuft nicht / UI nicht erreichbar
 
 ```powershell
-# Verbindung von einem Container aus testen
-docker run --rm alpine nslookup host.docker.internal
-# Muss eine IP (192.168.65.x) zurückgeben
+# Status pruefen
+abctl local status
 
-# DB-Port vom Host aus prüfen
+# Logs anzeigen
+abctl local logs
+
+# Neustart (bei haengenden Kind-Containern)
+abctl local uninstall
+abctl local install
+```
+
+### Airbyte-Connector kann DBs nicht erreichen
+
+Airbyte-Connector-Container kommunizieren ueber `host.docker.internal` mit den Datenbanken. Pruefen:
+
+```powershell
+# DNS-Aufloesung testen (muss 192.168.65.x liefern)
+docker run --rm alpine nslookup host.docker.internal
+
+# DB-Port vom Host aus pruefen
 Test-NetConnection -ComputerName localhost -Port 5433  # Source PG
 Test-NetConnection -ComputerName localhost -Port 5432  # Dest PG
 Test-NetConnection -ComputerName localhost -Port 3306  # Dest MySQL
 ```
 
-Falls die Ports nicht erreichbar sind: DB-Stack läuft nicht → `.\scripts\start.ps1`
+Falls die Ports nicht erreichbar sind: DB-Stack laeuft nicht → `.\scripts\start.ps1`
 
 ### Testdaten wurden nicht geladen (source-postgres ist leer)
 

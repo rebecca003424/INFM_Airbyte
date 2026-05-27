@@ -19,6 +19,18 @@ Ziel: Evaluierung von Airbyte als ETL-Tool für die Hochschul-IT (Ersatz für Ta
 
 ---
 
+## Airbyte Sync-Modi
+
+| Modus | Liest | Schreibt | Wann verwenden |
+|-------|-------|----------|----------------|
+| Full Refresh \| Overwrite | Alles | Ersetzt Ziel komplett | Erster Test, kleine Tabellen |
+| Full Refresh \| Append | Alles | Haengt an Ziel an | Historisierung ganzer Snapshots |
+| Full Refresh \| Overwrite + Deduped | Alles | Ersetzt + dedupliziert | Frischer Stand ohne Duplikate |
+| Incremental \| Append | Nur neue Zeilen | Haengt neue Zeilen an | Wachsende Logs, kein Cursor noetig |
+| Incremental \| Append + Deduped | Nur neue Zeilen | Haengt an + dedupliziert | IdM-Sync (Szenario 5), Cursor: `updatedat` |
+
+---
+
 ## Szenario 1: Einspielen der Testdaten
 
 **Ziel:** Vertrautmachen mit Airbyte, grundlegende Datenbankanbindungen testen.

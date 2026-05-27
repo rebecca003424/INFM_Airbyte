@@ -1,100 +1,140 @@
-# Airbyte lokal aufsetzen (Docker Desktop)
+# Airbyte lokal aufsetzen
+
+Offizielle Doku: https://docs.airbyte.com/platform/using-airbyte/getting-started/oss-quickstart
 
 ## Voraussetzungen
 
-- Docker Desktop läuft
-- Custom-DB-Stack ist gestartet (`.\scripts\start.ps1`)
-- Netzwerk `airbyte_net` existiert (`docker network ls | findstr airbyte_net`)
+| Anforderung | Minimum | Empfohlen |
+|-------------|---------|-----------|
+| Docker Desktop | laufend | laufend |
+| CPUs | 2 | 4+ |
+| RAM | 8 GB | 8 GB+ |
+
+> Der DB-Stack muss bereits laufen (`.\scripts\install.ps1`).
 
 ---
 
-## 1. Airbyte herunterladen
+## 1. abctl installieren
+
+`abctl` ist Airbybes offizielles CLI-Tool. Es installiert und verwaltet Airbyte in einem
+lokalen Kubernetes-Cluster (Kind), der automatisch in Docker Desktop laeuft.
+
+### Automatisch (empfohlen)
 
 ```powershell
-# Arbeitsverzeichnis ausserhalb des Repos wählen (z. B. C:\tools\airbyte)
-mkdir C:\tools\airbyte
-cd C:\tools\airbyte
-
-# Offizielles Run-Skript herunterladen
-curl -O https://raw.githubusercontent.com/airbytehq/airbyte/master/run-ab-platform.sh
+.\scripts\setup-airbyte.ps1
 ```
 
-Alternativ: ZIP direkt von [github.com/airbytehq/airbyte/releases](https://github.com/airbytehq/airbyte/releases) → `Source code (zip)`.
+Das Skript laedt `abctl` herunter, fuegt es zum PATH hinzu und startet die Installation.
+
+### Manuell (Windows)
+
+1. Prozessorarchitektur pruefen: Win+I -> System -> Info -> Prozessor
+2. Passende Version von https://github.com/airbytehq/abctl/releases/latest laden
+   - AMD/Intel: `abctl_Windows_amd64.zip`
+   - ARM: `abctl_Windows_arm64.zip`
+3. ZIP entpacken, `abctl.exe` nach `C:\tools\airbyte\` kopieren
+4. Verzeichnis zum PATH hinzufuegen (Systemsteuerung -> Umgebungsvariablen)
+5. Neues Terminal oeffnen, pruefen: `abctl version`
 
 ---
 
-## 2. Airbyte ins gleiche Netzwerk einbinden
-
-In der heruntergeladenen `docker-compose.yaml` von Airbyte am Ende ergänzen:
-
-```yaml
-# Externe Netzwerk-Referenz hinzufügen
-networks:
-  airbyte_internal:
-  airbyte_public:
-  airbyte_net:          # <-- NEU
-    external: true      # <-- NEU
-
-# Bei jedem Service, der auf die DBs zugreifen muss (airbyte-worker, airbyte-server),
-# das Netzwerk airbyte_net in der networks-Liste ergänzen:
-#   networks:
-#     - airbyte_internal
-#     - airbyte_net
-```
-
----
-
-## 3. Airbyte starten
+## 2. Airbyte installieren
 
 ```powershell
-cd C:\tools\airbyte
-docker compose up -d
+abctl local install
 ```
 
-Warten bis alle Container `healthy` sind (~2-3 Minuten):
+Bei wenig RAM (unter 6 GB frei):
 
 ```powershell
-docker compose ps
+abctl local install --low-resource-mode
 ```
 
-UI öffnen: **http://localhost:8000**  
-Standard-Login: `airbyte / password`
+Das Kommando fragt nach:
+- **E-Mail-Adresse** (fuer den Admin-Account)
+- **Organisations-Name** (z. B. `HSO`)
+
+Die Installation dauert **5-10 Minuten** (Container-Downloads).
 
 ---
 
-## 4. Sources in Airbyte konfigurieren
+## 3. Airbyte UI oeffnen
 
-### 4.1 Source: PostgreSQL (Testdaten)
+**http://localhost:8000**
+
+---
+
+## 4. Login-Credentials
+
+### Aktuelle Credentials anzeigen
+
+```powershell
+abctl local credentials
+```
+
+Ausgabe:
+```
+Email:         deine@email.de
+Password:      <generiertes-passwort>
+Client-ID:     ...
+Client-Secret: ...
+```
+
+### Passwort aendern
+
+```powershell
+abctl local credentials --password MeinNeuesPasswort123
+```
+
+---
+
+## 5. Sources konfigurieren
+
+### Source: PostgreSQL (Testdaten)
+
+In der Airbyte UI: **Sources** -> **New Source** -> **PostgreSQL**
 
 | Feld | Wert |
 |------|------|
+| Source name | `HSO Source PostgreSQL` |
 | Host | `host.docker.internal` |
 | Port | `5433` |
 | Database | `sourcedb` |
 | Username | `sourceuser` |
 | Password | `sourcepassword` |
-| SSL | Disabled |
+| SSL mode | `disable` |
 
-> **Warum `host.docker.internal`?** Airbyte spawnt Connector-Container dynamisch. Diese können nicht direkt auf Container-Namen im `airbyte_net` zugreifen, aber `host.docker.internal` löst immer zur Host-IP auf. Die DBs sind auf Host-Ports exponiert (5433/5432/3306).
+> **Warum `host.docker.internal`?** Airbyte lauft in einem Kind-Cluster innerhalb
+> von Docker Desktop. Die Connector-Container erreichen den Host-Rechner (und damit
+> unsere DB-Container auf ihren exponierten Ports) ueber `host.docker.internal`.
+
+**Test connection** klicken -> sollte gruen werden -> **Set up source**
 
 ---
 
-## 5. Destinations konfigurieren
+## 6. Destinations konfigurieren
 
-### 5.1 Destination: PostgreSQL
+### Destination: PostgreSQL
+
+**Destinations** -> **New Destination** -> **PostgreSQL**
 
 | Feld | Wert |
 |------|------|
+| Destination name | `HSO Dest PostgreSQL` |
 | Host | `host.docker.internal` |
 | Port | `5432` |
 | Database | `destdb` |
 | Username | `destuser` |
 | Password | `destpassword` |
 
-### 5.2 Destination: MySQL
+### Destination: MySQL
+
+**Destinations** -> **New Destination** -> **MySQL**
 
 | Feld | Wert |
 |------|------|
+| Destination name | `HSO Dest MySQL` |
 | Host | `host.docker.internal` |
 | Port | `3306` |
 | Database | `destdb` |
@@ -103,46 +143,50 @@ Standard-Login: `airbyte / password`
 
 ---
 
-## 6. Connection anlegen & Sync starten
+## 7. Connection anlegen und Sync starten
 
-1. **Sources** → `+ New Source` → Typ wählen → Verbindung testen
-2. **Destinations** → `+ New Destination` → Typ wählen → Verbindung testen
-3. **Connections** → `+ New Connection` → Source & Destination auswählen
-4. Streams auswählen (z. B. `fm_gebaeude`, `hso_students`, `k_plz`)
-5. Sync-Modus wählen:
-   - `Full Refresh | Overwrite` – Tabelle komplett neu schreiben
-   - `Incremental | Append` – nur neue Zeilen anhängen
-6. **Save & Sync** → Sync-Status im Dashboard beobachten
+1. **Connections** -> **New Connection**
+2. Source und Destination auswaehlen
+3. **Streams** auswaehlen (z. B. `fm_gebaeude`, `hso_students`, `k_plz`)
+4. **Sync Mode** pro Stream waehlen (siehe Tabelle unten)
+5. **Save and sync now**
 
----
+### Sync-Modi
 
-## 7. Verfügbare Testszenarien
-
-| Szenario | Source | Destination | Tabellen |
-|----------|--------|-------------|----------|
-| PG → PG  | source-postgres | dest-postgres | alle |
-| PG → MySQL | source-postgres | dest-mysql | alle |
-| CSV → PG | Local File / S3 | dest-postgres | k_res*.csv |
-| CSV → MySQL | Local File / S3 | dest-mysql | k_res*.csv |
-
-CSV-Dateien für File-Connector: `data/csv/k_res/`
+| Modus | Liest | Schreibt | Wann verwenden |
+|-------|-------|---------|----------------|
+| Full Refresh Overwrite | Alles | Ersetzt Ziel komplett | Erster Test, kleine Tabellen |
+| Full Refresh Append | Alles | Haengt an Ziel an | Historisierung ganzer Snapshots |
+| Full Refresh Overwrite + Deduped | Alles | Ersetzt + dedupliziert | Frischer Stand ohne Duplikate |
+| Incremental Append | Nur neue Zeilen | Haengt neue Zeilen an | Wachsende Logs, kein Cursor noetig |
+| Incremental Append + Deduped | Nur neue Zeilen | Haengt an + dedupliziert | IdM-Sync (Szenario 5), Cursor: `updatedat` |
 
 ---
 
-## Nützliche Befehle
+## 8. Nuetzliche abctl-Befehle
 
 ```powershell
-# Alle laufenden Container anzeigen
-docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+# Status pruefen
+abctl local status
 
-# Logs eines Containers
-docker logs hso_source_postgres --tail 50
+# Logs anzeigen
+abctl local logs
 
-# Direkt in source-postgres verbinden
-docker exec -it hso_source_postgres psql -U sourceuser -d sourcedb
+# Airbyte stoppen (Daten bleiben erhalten)
+abctl local uninstall
 
-# Datensätze prüfen
-# \dt             -- alle Tabellen
-# SELECT COUNT(*) FROM hso_students;
-# SELECT COUNT(*) FROM k_plz;
+# Alles loeschen (inkl. Daten)
+abctl local uninstall --persisted
+Remove-Item -Recurse "$env:USERPROFILE\.airbyte\abctl"
 ```
+
+---
+
+## Verbindungsuebersicht
+
+| Service | Fuer DB-Tools (lokal) | Fuer Airbyte (in der UI) |
+|---------|----------------------|--------------------------|
+| Source PostgreSQL | `localhost:5433` | `host.docker.internal:5433` |
+| Dest PostgreSQL | `localhost:5432` | `host.docker.internal:5432` |
+| Dest MySQL | `localhost:3306` | `host.docker.internal:3306` |
+| Airbyte UI | http://localhost:8000 | - |
