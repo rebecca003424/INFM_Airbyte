@@ -105,11 +105,35 @@ In der Airbyte UI: **Sources** -> **New Source** -> **PostgreSQL**
 | Password | `sourcepassword` |
 | SSL mode | `disable` |
 
+**Advanced -> Update Method:** `Scan Changes with User Defined Cursor`
+
+> **Warum Cursor statt CDC (WAL)?**
+> CDC benoetigt `wal_level = logical` + Replication Slot + Publication in PostgreSQL.
+> Das ist fuer unsere Test-Umgebung nicht konfiguriert.
+> `Xmin System Column` waere eine Alternative, hat aber Einschraenkungen bei hohem
+> Transaktionsvolumen. Der Cursor-Modus funktioniert direkt mit unserer `updatedat`-Spalte
+> (Szenario 5) und braucht keine weitere DB-Konfiguration.
+
 > **Warum `host.docker.internal`?** Airbyte lauft in einem Kind-Cluster innerhalb
 > von Docker Desktop. Die Connector-Container erreichen den Host-Rechner (und damit
 > unsere DB-Container auf ihren exponierten Ports) ueber `host.docker.internal`.
 
 **Test connection** klicken -> sollte gruen werden -> **Set up source**
+
+Nach erfolgreichem Setup sind folgende Streams verfuegbar:
+
+| Stream | Inhalt |
+|--------|--------|
+| `fm_gebaeude` | Gebaeude der Hochschule (27 Zeilen) |
+| `fm_inst` | Institute / Org-Einheiten (~120 Zeilen) |
+| `fm_stamm` | Raumstammdaten |
+| `k_plz` | PLZ-Verzeichnis (~37.500 Zeilen) |
+| `hso_students` | Studierende anonymisiert (~1.500 Zeilen) |
+| `fm_rna` | Raumnutzungsarten (~50 Zeilen) |
+| `hso_personal` | Personal anonymisiert (~300 Zeilen) |
+
+> `fm_rna` und `hso_personal` werden durch `scripts/load_json.py` geladen
+> (laeuft automatisch in `install.ps1`). Manuell: `python scripts\load_json.py`
 
 ---
 
@@ -168,21 +192,60 @@ Die Dateien werden automatisch beim Stackstart durch den `hso_fileserver`-Contai
 
 **Sources** -> **New Source** -> **File (CSV, JSON, Excel, Feather, Parquet)**
 
-### Konfiguration (gilt fuer alle CSV-Dateien)
+Alle CSV-Sources verwenden **Storage Provider: `local: Local Filesystem (limited)`**.
+
+### HSO CSV k_plz
 
 | Feld | Wert |
 |------|------|
-| **Storage Provider** | `local: Local Filesystem (limited)` |
-| **URL** | `/local/<dateiname>.csv` |
+| Source name | `HSO CSV k_plz` |
+| Dataset Name | `k_plz` |
+| File Format | `csv` |
+| Storage Provider | `local: Local Filesystem (limited)` |
+| URL | `/local/k_plz.csv` |
+| Reader Options | `{"sep": ","}` |
 
-### Verfuegbare Dateien
+### HSO CSV fm_gebaeude
 
-| Dataset Name | URL | Reader Options |
+| Feld | Wert |
+|------|------|
+| Source name | `HSO CSV fm_gebaeude` |
+| Dataset Name | `fm_gebaeude` |
+| File Format | `csv` |
+| Storage Provider | `local: Local Filesystem (limited)` |
+| URL | `/local/fm_gebaeude.csv` |
+| Reader Options | `{"sep": ","}` |
+
+### HSO CSV fm_inst
+
+| Feld | Wert |
+|------|------|
+| Source name | `HSO CSV fm_inst` |
+| Dataset Name | `fm_inst` |
+| File Format | `csv` |
+| Storage Provider | `local: Local Filesystem (limited)` |
+| URL | `/local/fm_inst.csv` |
+| Reader Options | `{"sep": ";"}` |
+
+### HSO CSV hso_students
+
+| Feld | Wert |
+|------|------|
+| Source name | `HSO CSV hso_students` |
+| Dataset Name | `hso_students` |
+| File Format | `csv` |
+| Storage Provider | `local: Local Filesystem (limited)` |
+| URL | `/local/hso_students.csv` |
+| Reader Options | `{"sep": "\|"}` |
+
+### Uebersicht alle CSV-Sources
+
+| Source Name | URL | Trennzeichen |
 |---|---|---|
-| `k_plz` | `/local/k_plz.csv` | `{"sep": ","}` |
-| `fm_gebaeude` | `/local/fm_gebaeude.csv` | `{"sep": ","}` |
-| `fm_inst` | `/local/fm_inst.csv` | `{"sep": ";"}` |
-| `hso_students` | `/local/hso_students.csv` | `{"sep": "\|"}` |
+| `HSO CSV k_plz` | `/local/k_plz.csv` | `,` |
+| `HSO CSV fm_gebaeude` | `/local/fm_gebaeude.csv` | `,` |
+| `HSO CSV fm_inst` | `/local/fm_inst.csv` | `;` |
+| `HSO CSV hso_students` | `/local/hso_students.csv` | `\|` (Pipe) |
 
 > **Warum `local` und nicht `HTTPS: Public Web`?**
 > Der `source-file`-Connector (v0.6.0) erzwingt bei `HTTPS: Public Web` immer eine

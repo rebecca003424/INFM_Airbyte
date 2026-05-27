@@ -6,16 +6,17 @@ Ziel: Evaluierung von Airbyte als ETL-Tool für die Hochschul-IT (Ersatz für Ta
 
 ## Übersicht der Testdaten
 
-| Datei / Tabelle | Format | Inhalt | Zeilen |
-|-----------------|--------|--------|--------|
-| `hso_students` | Pipe-CSV | Studierende (anonym.) | ~1.500 |
-| `fm_gebaeude` | CSV | Gebäude der Hochschule | 27 |
-| `fm_inst` | Semikolon-CSV | Institute / Org-Einheiten | ~120 |
-| `fm_stamm` | SQL/CSV | Raumstammdaten (geb+inst) | variabel |
-| `k_plz` | CSV | PLZ-Verzeichnis Deutschland | ~37.500 |
-| `fm_rna.json` | JSON | Raumnutzungsarten | ~50 |
-| `k_res*.csv` | Semikolon-CSV | Klassifikations-Lookups | je ~5–20 |
-| `hso_accountgenerator.js` | JavaScript | Account-Name-Logik | – |
+| Datei / Tabelle | Format | Inhalt | Zeilen | In source-postgres |
+|-----------------|--------|--------|--------|--------------------|
+| `hso_students` | Pipe-CSV | Studierende (anonym.) | ~1.500 | `hso_students` |
+| `fm_gebaeude` | CSV | Gebaeude der Hochschule | 27 | `fm_gebaeude` |
+| `fm_inst` | Semikolon-CSV | Institute / Org-Einheiten | ~120 | `fm_inst` |
+| `fm_stamm` | SQL/CSV | Raumstammdaten (geb+inst) | variabel | `fm_stamm` |
+| `k_plz` | CSV | PLZ-Verzeichnis Deutschland | ~37.500 | `k_plz` |
+| `fm_rna.json` | JSON | Raumnutzungsarten | ~50 | `fm_rna` (via load_json.py) |
+| `hso_personal.json` | JSON | Personal HSO (anonym.) | ~300 | `hso_personal` (via load_json.py) |
+| `k_res*.csv` | Semikolon-CSV | Klassifikations-Lookups | je ~5-20 | - |
+| `hso_accountgenerator.js` | JavaScript | Account-Name-Logik | - | - |
 
 ---
 
