@@ -14,6 +14,7 @@
 | [docs/airbyte-setup.md](docs/airbyte-setup.md) | Airbyte (abctl) installieren, Sources/Destinations |
 | [docs/etl-prozess.md](docs/etl-prozess.md) | Runbook: erster ETL-Prozess (mit Screenshot-Punkten) |
 | [docs/testszenarien.md](docs/testszenarien.md) | Die 6 Evaluations-Szenarien |
+| [docs/anforderungen.md](docs/anforderungen.md) | Anforderungen & Umsetzungsstand (Kickoff + Szenarien) |
 | [docs/zwischenbericht.md](docs/zwischenbericht.md) | Zwischenbericht (Abgabe 7.6.) |
 
 > Offizielle Airbyte-Doku: <https://docs.airbyte.com/> · [abctl (Deployment)](https://docs.airbyte.com/platform/deploying-airbyte/abctl) · [File Source Connector](https://docs.airbyte.com/integrations/sources/file)

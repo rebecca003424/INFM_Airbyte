@@ -20,14 +20,14 @@ Die Evaluation ist in **sechs Testszenarien** gegliedert (DB-Connector, Facility
 
 ---
 
-## 2. Erreichte Meilensteine (Stand 31.05.2026)
+## 2. Erreichte Meilensteine (Stand 06.06.2026)
 
 | Meilenstein (lt. Betreuer-Mail) | Status | Beleg / Doku |
 |---|---|---|
-| **Installation des Systems** | ✅ Datenbank-Stack lauffähig; Airbyte vorbereitet | [installation-guide.md](installation-guide.md) |
-| **Zugang für Betreuer** | ◑ dokumentiert, Einrichtung ‹ausstehend/erfolgt› | [zugang.md](zugang.md) |
-| **Einfacher ETL-Prozess** | ◑ Runbook erstellt, Ausführung ‹ausstehend/erfolgt› | [etl-prozess.md](etl-prozess.md) |
-| **Beginn der Dokumentation** | ✅ README + 6 Dokumente unter `docs/` | dieses Repo |
+| **Installation des Systems** | ✅ DB-Stack + Airbyte (abctl) lauffähig | [installation-guide.md](installation-guide.md) |
+| **Zugang für Betreuer** | ◑ dokumentiert, Einrichtung im Termin | [zugang.md](zugang.md) |
+| **Einfacher ETL-Prozess** | ✅ **durchgeführt & verifiziert** (Postgres→Postgres) | [etl-prozess.md](etl-prozess.md) |
+| **Beginn der Dokumentation** | ✅ README + 8 Dokumente unter `docs/` | dieses Repo |
 
 ### 2.1 Installation
 
@@ -52,6 +52,28 @@ Die anonymisierten Testdaten sind geladen:
 | `hso_personal` | 870 | `scripts/load_json.py` |
 | `hso_students` | 0 | ⚠️ nur via File-Connector (s. Kap. 4) |
 | `fm_stamm` | 0 | keine Quelldatei (s. Kap. 5) |
+
+### 2.3 Angelegte Airbyte-Connectoren & erster ETL-Lauf
+
+In Airbyte sind angelegt und per Verbindungstest grün:
+
+- **Sources (5):** `HSO Source PostgreSQL` (Postgres, Update-Methode *User Defined Cursor*),
+  sowie vier File-Connectoren (`local`, `/local/*.csv`): `HSO CSV hso_students`,
+  `HSO CSV k_plz`, `HSO CSV fm_gebaeude`, `HSO CSV fm_inst`.
+- **Destinations (2):** `HSO Dest PostgreSQL` (Port 5434), `HSO Dest MySQL` (Port 3306,
+  SSL aus, `allowPublicKeyRetrieval=true`, Raw-DB `destdb`).
+
+Der **erste ETL-Prozess** (Connection `HSO Source PostgreSQL → HSO Dest PostgreSQL`,
+Streams `fm_gebaeude` + `k_plz`, Modus *Full Refresh | Overwrite*) wurde erfolgreich
+ausgeführt. Verifikation in der Ziel-DB:
+
+| Stream | Zeilen Source | Zeilen Ziel (`destdb`) |
+|---|---:|---:|
+| `fm_gebaeude` | 25 | **25** |
+| `k_plz` | 34.172 | **34.172** |
+
+Damit sind sowohl der **DB-Connector** als auch der **File-Connector** (Szenario 1)
+nachweislich lauffähig.
 
 ---
 
@@ -104,6 +126,23 @@ Der SQL-Init lud die drei Kern-Tabellen **gar nicht** — `COPY` brach unter `ON
 
 **Lösung:** tolerante Python-Loader (`scripts/load_*.py`), die Header filtern, fehlerhafte Zeilen reparieren bzw. überspringen, NUL-Bytes und Mojibake bereinigen und Typkonvertierungen best-effort vornehmen. Der SQL-`COPY`-Schritt wurde entfernt (`01_load_data.sql`).
 
+### 5.3 Airbyte/abctl-spezifische Hürden
+
+Airbyte Community läuft über `abctl` in einem **kind-Kubernetes-Cluster**. Daraus ergaben
+sich mehrere nicht-offensichtliche, in der offiziellen Doku nicht beschriebene Hürden, die
+wir analysiert und gelöst haben:
+
+| Problem | Ursache | Lösung |
+|---|---|---|
+| **File-Connector** (`local`) findet `/local/*.csv` nicht | Connector-Pods (kind) sehen das Docker-Volume `oss_local_root` nicht | CSV-Verzeichnis beim Install via `abctl local install --volume "…:/local"` direkt in den Cluster mounten |
+| `--volume` mit Windows-Pfad: `is not a valid volume spec` | abctl trennt den Volume-String stur an `:`, der Laufwerks-Doppelpunkt (`C:`) kollidiert | Pfad in MSYS-Form `/c/Users/...` angeben |
+| **Alle** Connector-Tests/Syncs hängen `Pending` | Aktiviertes lokales Volume erwartet PVC `airbyte-local-pvc` in **jedem** Job-Pod; es existierte nicht (`persistentvolumeclaim not found`) | PV (hostPath `/local`) + PVC `airbyte-local-pvc` anlegen; `JOB_KUBE_LOCAL_VOLUME_ENABLED=true` + Neustart von launcher/worker |
+| `abctl local credentials --email … --password …` schlägt fehl (`unable to determine organization email`, `invalid character '<'`) | Kombinierter Aufruf löst einen Org-Lookup aus, der HTML statt JSON liefert | E-Mail und Passwort in **zwei getrennten** Aufrufen setzen (erst `--email`, dann `--password`) |
+| Connector-Auswahl heißt **„Postgres"** (nicht „PostgreSQL"); Default-Update-Methode ist **CDC** | — | In der UI „Postgres" wählen; Update-Methode auf *User Defined Cursor* stellen (CDC bräuchte `wal_level=logical`) |
+
+Alle Lösungen sind in `scripts/setup-airbyte.ps1`/`.sh` automatisiert und in
+[airbyte-setup.md](airbyte-setup.md) / [etl-prozess.md](etl-prozess.md) dokumentiert.
+
 ---
 
 ## 6. Offene Punkte / Fragen an die Betreuer
@@ -118,10 +157,23 @@ Der SQL-Init lud die drei Kern-Tabellen **gar nicht** — `COPY` brach unter `ON
 
 ---
 
-## 7. Nächste Schritte
+## 7. Anforderungs- und Szenarien-Status
 
-- Ausführung des ersten ETL-Prozesses inkl. Screenshots ([etl-prozess.md](etl-prozess.md)).
-- Bearbeitung der weiteren Szenarien (Facility-Management-Denormalisierung, BLOB-Bilder, Incremental Sync, Web-APIs).
+Eine vollständige Gegenüberstellung aller Kickoff-Anforderungen und der sechs Szenarien
+mit Bewertung der Airbyte-Eignung und unserem Umsetzungsstand steht in
+**[anforderungen.md](anforderungen.md)**. Kernbefunde:
+
+- **Erfüllt:** Open Source/Community, PostgreSQL- & MySQL-Anbindung, CSV/JSON/Excel-Dateien,
+  Logging/Monitoring, einfacher ETL-Lauf (verifiziert).
+- **Einschränkungen ggü. Talend:** **kein** OSS-Connector für **Informix**; **kein XML** nativ;
+  **keine freie Code-Snippet-Ausführung** (Mapping nur via dbt-SQL/Custom-Connector). Diese
+  Punkte sind die zentralen Evaluationsbefunde.
+
+## 8. Nächste Schritte
+
+- Szenario 1 abrunden: Sync auch nach MySQL + ein File→DB-Sync (Nachweis File-Connector-Last).
+- Weitere Szenarien: FM-Denormalisierung (dbt/View), BLOB-Bilder, Incremental Sync (IdM),
+  Web-APIs (PostgREST/SOAP).
 - Klärung der offenen Fragen aus Kap. 6.
 
 ---
