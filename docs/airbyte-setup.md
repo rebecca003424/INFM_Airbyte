@@ -1,6 +1,17 @@
 # Airbyte lokal aufsetzen
 
-Offizielle Doku: https://docs.airbyte.com/platform/using-airbyte/getting-started/oss-quickstart
+Offizielle Doku: <https://docs.airbyte.com/platform/using-airbyte/getting-started/oss-quickstart>
+
+**Offizielle Referenzen der hier genutzten Connectoren/Konzepte:**
+
+| Thema | Offizielle Doku |
+|---|---|
+| Postgres Source | <https://docs.airbyte.com/integrations/sources/postgres> |
+| Postgres Destination | <https://docs.airbyte.com/integrations/destinations/postgres> |
+| MySQL Destination | <https://docs.airbyte.com/integrations/destinations/mysql> |
+| File Source (CSV/JSON/…) | <https://docs.airbyte.com/integrations/sources/file> |
+| abctl (Deployment) | <https://docs.airbyte.com/platform/deploying-airbyte/abctl> |
+| Sync-Modi (Konzept) | <https://docs.airbyte.com/using-airbyte/core-concepts/sync-modes/> |
 
 ## Voraussetzungen
 
@@ -135,12 +146,16 @@ In der Airbyte UI: **Sources** -> **New Source** -> **Postgres**
 
 **Advanced -> Update Method:** `Scan Changes with User Defined Cursor`
 
-> **Warum Cursor statt CDC (WAL)?**
-> CDC benoetigt `wal_level = logical` + Replication Slot + Publication in PostgreSQL.
-> Das ist fuer unsere Test-Umgebung nicht konfiguriert.
-> `Xmin System Column` waere eine Alternative, hat aber Einschraenkungen bei hohem
-> Transaktionsvolumen. Der Cursor-Modus funktioniert direkt mit unserer `updatedat`-Spalte
-> (Szenario 5) und braucht keine weitere DB-Konfiguration.
+> **Warum Cursor statt CDC (WAL) oder Xmin?**
+> Der Postgres-Source-Connector bietet drei Update-Methoden
+> ([offizielle Doku](https://docs.airbyte.com/integrations/sources/postgres)):
+> - **CDC** (logische Replikation): braucht `wal_level = logical`, `max_wal_senders ≥ 1`,
+>   einen Replication Slot (pgoutput) + Publication je Tabelle — in unserer Test-Umgebung
+>   nicht konfiguriert.
+> - **Xmin** (cursorlos): keine DB-Konfiguration nötig, **aber** unterstützt keine
+>   non-materialized Views und ist anfällig bei Transaction-ID-Wraparound (hohe Schreiblast).
+> - **User Defined Cursor** (unsere Wahl): nutzt direkt die Spalte `updatedat` (Szenario 5),
+>   braucht keine weitere DB-Konfiguration.
 
 > **Warum `host.docker.internal`?** Airbyte lauft in einem Kind-Cluster innerhalb
 > von Docker Desktop. Die Connector-Container erreichen den Host-Rechner (und damit
@@ -218,11 +233,16 @@ Nach erfolgreichem Setup sind folgende Streams verfuegbar:
 | JDBC URL Params | `allowPublicKeyRetrieval=true` |
 | Raw table database | `destdb` |
 
-> **Wichtige Hinweise fuer MySQL 8.0:**
+> **Wichtige Hinweise fuer MySQL 8.0** ([offizielle Doku](https://docs.airbyte.com/integrations/destinations/mysql)):
 > - **SSL ausschalten** - sonst schlaegt der Verbindungstest mit SSL-Handshake-Fehler fehl.
+>   (Airbyte Cloud erzwingt TLS; in der lokalen OSS-Variante ist SSL deaktivierbar.)
 > - **JDBC URL Params** benoetigt `allowPublicKeyRetrieval=true` fuer die caching_sha2_password-Authentifizierung.
 > - **Raw table database** muss auf `destdb` gesetzt werden. Leer lassen wuerde `airbyte_internal` als separate Datenbank anlegen, auf die `destuser` keinen Zugriff hat.
-> - Der MySQL-Container startet mit `--local-infile=1` (in `docker-compose.yml`), da Airbyte dieses Flag zum Laden von Daten benoetigt.
+> - Der MySQL-Container startet mit `--local-infile=1` (in `docker-compose.yml`), da Airbyte
+>   per `LOAD DATA LOCAL INFILE` laedt (offiziell: `SET GLOBAL local_infile = true`).
+> - **Tabellen-/Spaltennamen werden klein geschrieben:** Der Connector zwingt alle Identifier
+>   (Tabelle, Schema, Spalten) in Kleinbuchstaben - im Ziel also z. B. `hso_user`, nicht `HSO_USER`.
+> - Benoetigte Rechte des Ziel-Users: `CREATE, INSERT, SELECT, DROP` (bei uns hat `destuser` sie auf `destdb`).
 
 ---
 

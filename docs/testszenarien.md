@@ -22,6 +22,10 @@ Ziel: Evaluierung von Airbyte als ETL-Tool für die Hochschul-IT (Ersatz für Ta
 
 ## Airbyte Sync-Modi
 
+> Konzept-Doku: <https://docs.airbyte.com/using-airbyte/core-concepts/sync-modes/>
+> **Inkrementelle Modi** brauchen ein **Cursor-Feld** (neue Zeilen erkennen); alle
+> **Deduped**-Modi zusätzlich einen **Primary Key** (für die Deduplizierung).
+
 | Modus | Liest | Schreibt | Wann verwenden |
 |-------|-------|----------|----------------|
 | Full Refresh \| Overwrite | Alles | Ersetzt Ziel komplett | Erster Test, kleine Tabellen |
