@@ -157,6 +157,7 @@ INFM_Airbyte/
     ├── setup-airbyte.ps1 · .sh         ← Airbyte via abctl installieren
     ├── start.ps1 · start.sh            ← Stack starten
     ├── stop.ps1 · stop.sh              ← Stack stoppen (-v für vollständigen Reset)
+    ├── uninstall.ps1 · uninstall.sh    ← Airbyte (abctl) + Stack komplett entfernen
     ├── load_json.py                    ← lädt fm_rna + hso_personal (JSON)
     ├── load_fm_inst.py                 ← lädt fm_inst (Semikolon-CSV, 86→24 Spalten)
     ├── load_fm_gebaeude.py             ← lädt fm_gebaeude (repariert kaputte Zeilen)
@@ -201,4 +202,9 @@ docker exec -it hso_source_postgres psql -U sourceuser -d sourcedb
 
 # Vollständiger Reset (alle Daten löschen)
 .\scripts\stop.ps1 -v
+
+# Komplett deinstallieren (Airbyte/abctl + DB-Stack + Volumes)
+.\scripts\uninstall.ps1                 # mit Rückfrage
+.\scripts\uninstall.ps1 -KeepData       # DB-Daten behalten
+.\scripts\uninstall.ps1 -RemoveAbctl    # zusätzlich abctl-Binary entfernen
 ```
