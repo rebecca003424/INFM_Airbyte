@@ -274,7 +274,9 @@ Airbyte kann REST-APIs als Source einbinden (HTTP-Source-Connector).
 
 Für das Bereitstellen einer REST-API eignet sich ein separater Dienst:
 - **PostgREST**: Generiert automatisch REST-API aus PostgreSQL-Schema
-- In `docker-compose.yml` ergänzen:
+- ✅ **bereits in `docker-compose.yml` umgesetzt** (Service `postgrest`/`hso_postgrest`);
+  starten mit `docker compose up -d postgrest`, dann z. B. `GET http://localhost:3000/k_plz?limit=5`.
+  Die folgende Definition ist dort enthalten:
 
 ```yaml
 postgrest:
