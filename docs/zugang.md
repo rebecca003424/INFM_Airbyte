@@ -12,19 +12,23 @@ zugegriffen wird — inkl. des Zugangs für die Betreuer (Herr Stippekohl + Doze
 | URL | **http://localhost:8000** |
 | Login anzeigen | `abctl local credentials` |
 
-`abctl local credentials` gibt E-Mail, ein generiertes Passwort sowie Client-ID/Secret aus.
+`abctl local credentials` gibt E-Mail, ein generiertes Passwort sowie Client-ID/Secret aus
+(Passwort im **Klartext** — daher nur bei Bedarf ausführen).
 
 ### Eigenes / gemeinsames Passwort setzen
 
+In **zwei getrennten** Aufrufen, **erst die E-Mail**, dann das Passwort:
+
 ```powershell
-abctl local credentials --email <login-email> --password <gewuenschtes-passwort>
+abctl local credentials --email <login-email>            # 1) Login-Name (E-Mail)
+abctl local credentials --password <gewuenschtes-passwort> # 2) Passwort
 ```
 
-> **Die E-Mail ist der Login-Name in der UI.** `--email` immer mitangeben: Ist in der
-> Installation noch keine E-Mail gesetzt (`abctl local credentials` zeigt dann
-> `Email: [not set]`), schlägt der reine `--password`-Aufruf mit
-> `unable to determine organization email` fehl. Die E-Mail ist frei wählbar
-> (z. B. `admin@example.com`).
+> **Warum getrennt?** Der **kombinierte** Aufruf `--email … --password …` schlägt mit
+> abctl 0.30.x + Airbyte 2.1.0 fehl (`unable to determine organization email` /
+> `invalid character '<'`, da der Org-Lookup HTML statt JSON liefert). Getrennt klappt es.
+> Die E-Mail ist frei wählbar (z. B. `admin@example.com`) und der Login-Name in der UI.
+> Das Setup-Skript erledigt beides automatisch.
 
 > Für den Betreuer-Termin empfiehlt sich ein **bewusst gesetztes, gemeinsames Passwort**
 > (statt des generierten), damit alle denselben Login verwenden können.

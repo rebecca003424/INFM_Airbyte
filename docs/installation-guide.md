@@ -148,15 +148,20 @@ abctl local status
 abctl local credentials
 ```
 
-> Ausgabe zeigt E-Mail, generiertes Passwort, Client-ID und Client-Secret.
+> Ausgabe zeigt E-Mail, generiertes Passwort, Client-ID und Client-Secret (Passwort
+> im Klartext — daher nur bei Bedarf ausführen).
 
-**Eigenes Passwort setzen** (E-Mail = Login-Name, muss mitangegeben werden):
+**Eigenes Passwort setzen** — E-Mail (= Login-Name) und Passwort in **zwei getrennten**
+Aufrufen, erst die E-Mail:
 
 ```powershell
-abctl local credentials --email login@example.com --password <gewuenschtes-passwort>
+abctl local credentials --email login@example.com      # 1) Login-E-Mail
+abctl local credentials --password <gewuenschtes-passwort>   # 2) Passwort
 ```
 
-Weitere Details: [docs/airbyte-setup.md](airbyte-setup.md)
+> Der **kombinierte** Aufruf `--email … --password …` schlägt fehl
+> (`unable to determine organization email`). Hintergrund + Details:
+> [docs/airbyte-setup.md](airbyte-setup.md).
 
 ---
 

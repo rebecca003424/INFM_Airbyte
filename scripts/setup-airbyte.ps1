@@ -175,11 +175,18 @@ if (Test-Path $DATA_DIR) {
 }
 
 Write-Host ""
-& $ABCTL_EXE @installArgs
+# abctl hat keinen --quiet-Schalter; sein Fortschritts-Spinner "spammt" die Konsole,
+# wenn die Ausgabe kein echtes TTY ist. Darum die gesamte Ausgabe in eine Logdatei
+# umleiten (*> = alle Streams) und nur eine knappe Statuszeile zeigen.
+$installLog = Join-Path $env:TEMP ("abctl-install-{0}.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss'))
+Write-Host "  Installiere Airbyte - laeuft ~5-10 Min ohne Live-Ausgabe." -ForegroundColor Yellow
+Write-Host "  Live-Fortschritt optional im zweiten Fenster: Get-Content `"$installLog`" -Wait" -ForegroundColor DarkGray
+& $ABCTL_EXE @installArgs *> $installLog
 
 if ($LASTEXITCODE -ne 0) {
     Write-Fail "abctl local install fehlgeschlagen (Exit-Code $LASTEXITCODE)."
-    Write-Host "  Logs pruefen: abctl local logs" -ForegroundColor Gray
+    Write-Host "  Letzte Logzeilen ($installLog):" -ForegroundColor Gray
+    Get-Content $installLog -Tail 20 | ForEach-Object { Write-Host "    $_" -ForegroundColor DarkGray }
     exit 1
 }
 Write-Ok "Airbyte erfolgreich installiert."
@@ -205,50 +212,56 @@ if (Test-Path $DATA_DIR) {
     }
 }
 
-# --- 6. Credentials setzen ---------------------------------------------------
+# --- 6. Login-Credentials setzen ---------------------------------------------
+# WICHTIG (abctl 0.30.x + Airbyte 2.1.0): E-Mail und Passwort muessen in ZWEI
+# getrennten Aufrufen gesetzt werden - erst --email, DANN --password. Der kombinierte
+# Aufruf 'credentials --email X --password Y' loest einen Org-Lookup aus, der mit
+# "unable to determine organization email" / "invalid character '<'" fehlschlaegt.
+# Security: Passwoerter werden verdeckt eingelesen und NIE im Klartext ausgegeben.
 
 Write-Step "Login-Credentials konfigurieren"
+
+# Aktuelle Login-E-Mail ermitteln - nur die E-Mail auslesen, das Passwort NICHT anzeigen.
+$currentCreds = (& $ABCTL_EXE local credentials 2>&1 | Out-String)
+$emailMatch   = [regex]::Match($currentCreds, '(?im)^\s*Email:\s*([^\s\[]+@\S+)')
+$loginEmail   = if ($emailMatch.Success) { $emailMatch.Groups[1].Value } else { $null }
+Write-Host ("  Aktuelle Login-E-Mail: {0}" -f ($(if ($loginEmail) { $loginEmail } else { "(noch nicht gesetzt)" }))) -ForegroundColor DarkGray
 Write-Host ""
 
-$currentCreds = & $ABCTL_EXE local credentials 2>&1
-Write-Host "  Aktuelle Credentials:" -ForegroundColor DarkGray
-Write-Host "  $currentCreds" -ForegroundColor DarkGray
-Write-Host ""
+# 1) E-Mail (Login-Name) setzen - immer, wenn noch keine vorhanden ist; sonst optional.
+$email = $null
+if (-not $loginEmail) {
+    $email = Read-Host "  Login-E-Mail setzen [admin@example.com]"
+    if ([string]::IsNullOrWhiteSpace($email)) { $email = "admin@example.com" }
+} elseif ((Read-Host "  Login-E-Mail aendern? (j/N)") -in @("j","J","y","Y")) {
+    $email = Read-Host "  Neue Login-E-Mail"
+}
+if (-not [string]::IsNullOrWhiteSpace($email)) {
+    & $ABCTL_EXE local credentials --email $email *> $null
+    if ($LASTEXITCODE -eq 0) { Write-Ok "Login-E-Mail gesetzt: $email"; $loginEmail = $email }
+    else { Write-Warn "E-Mail konnte nicht gesetzt werden. Manuell: abctl local credentials --email <email>" }
+}
 
-$setPassword = Read-Host "  Eigenes Passwort setzen? (j/N)"
-if ($setPassword -in @("j","J","y","Y")) {
-    # Passwort verdeckt einlesen (kein Klartext in der Konsole)
+# 2) Passwort setzen - verdeckt einlesen, SEPARATER Aufruf NACH der E-Mail.
+if ((Read-Host "  Eigenes Passwort setzen? (j/N)") -in @("j","J","y","Y")) {
     $securePass = Read-Host "  Neues Passwort" -AsSecureString
     $newPass    = [System.Net.NetworkCredential]::new("", $securePass).Password
     if (-not [string]::IsNullOrWhiteSpace($newPass)) {
-        # abctl benoetigt eine gesetzte Organisations-E-Mail. Ist keine vorhanden
-        # ("Email: [not set]"), schlaegt der interne Lookup mit "unable to
-        # determine organization email" / "invalid character '<'" fehl (die API
-        # liefert dann HTML statt JSON). Darum E-Mail explizit per --email setzen.
-        $emailMatch = [regex]::Match("$currentCreds", '(?im)^\s*Email:\s*([^\s\[]+@\S+)')
-        if ($emailMatch.Success) {
-            $email = $emailMatch.Groups[1].Value
-        } else {
-            $email = Read-Host "  E-Mail fuer den Login (noch keine gesetzt) [admin@example.com]"
-            if ([string]::IsNullOrWhiteSpace($email)) { $email = "admin@example.com" }
-        }
-        & $ABCTL_EXE local credentials --email $email --password $newPass
-        if ($LASTEXITCODE -eq 0) {
-            Write-Ok "Passwort gesetzt."
-        } else {
-            Write-Warn "Passwort konnte nicht gesetzt werden. Manuell: abctl local credentials --email <email> --password <passwort>"
-        }
+        & $ABCTL_EXE local credentials --password $newPass *> $null
+        if ($LASTEXITCODE -eq 0) { Write-Ok "Passwort gesetzt." }
+        else { Write-Warn "Passwort konnte nicht gesetzt werden. Manuell: abctl local credentials --password <passwort>" }
+        $newPass = $null; $securePass = $null   # sensible Variablen leeren
     } else {
         Write-Warn "Leeres Passwort - keine Aenderung vorgenommen."
     }
 } else {
-    Write-Warn "Standard-Credentials beibehalten. Zum Aendern: abctl local credentials --password <passwort>"
+    Write-Warn "Generiertes Passwort beibehalten."
 }
 
-# Credentials noch einmal anzeigen
+# Login-Hinweis OHNE Passwort-Klartext.
 Write-Host ""
-Write-Host "  Aktuelle Login-Daten:" -ForegroundColor Cyan
-& $ABCTL_EXE local credentials 2>&1 | ForEach-Object { Write-Host "    $_" -ForegroundColor White }
+Write-Host ("  Login-E-Mail: {0}" -f ($(if ($loginEmail) { $loginEmail } else { "(siehe 'abctl local credentials')" }))) -ForegroundColor Cyan
+Write-Host "  Passwort: aus Security-Gruenden nicht angezeigt. Bei Bedarf selbst abrufen: abctl local credentials" -ForegroundColor DarkGray
 
 # --- 7. Ergebnis -------------------------------------------------------------
 

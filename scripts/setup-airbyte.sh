@@ -60,8 +60,18 @@ if [ -d "$DATA_DIR" ]; then
 else
   warn "Datenverzeichnis nicht gefunden ($DATA_DIR) - File-Connector-Mount uebersprungen."
 fi
-abctl "${install_args[@]}"
-ok "Airbyte installiert."
+# abctl hat keinen --quiet-Schalter; sein Fortschritts-Spinner "spammt" die Konsole,
+# wenn die Ausgabe kein echtes TTY ist. Darum Ausgabe in eine Logdatei umleiten.
+INSTALL_LOG="$(mktemp -t abctl-install.XXXXXX.log 2>/dev/null || echo /tmp/abctl-install.log)"
+warn "Installiere Airbyte - laeuft ~5-10 Min ohne Live-Ausgabe."
+echo  "  Live-Fortschritt optional: tail -f \"$INSTALL_LOG\""
+if abctl "${install_args[@]}" >"$INSTALL_LOG" 2>&1; then
+  ok "Airbyte installiert."
+else
+  fail "abctl local install fehlgeschlagen. Letzte Logzeilen ($INSTALL_LOG):"
+  tail -n 20 "$INSTALL_LOG" | sed 's/^/    /'
+  exit 1
+fi
 
 # File-Connector-Volume aktivieren: damit die Connector-Pods /local sehen, muss
 # JOB_KUBE_LOCAL_VOLUME_ENABLED=true sein. abctl setzt das nicht automatisch.
@@ -76,10 +86,55 @@ if [ -d "$DATA_DIR" ]; then
   fi
 fi
 
-cyan "Login-Credentials"
-abctl local credentials || true
+cyan "Login-Credentials konfigurieren"
+# WICHTIG (abctl 0.30.x + Airbyte 2.1.0): erst --email, DANN --password (getrennte
+# Aufrufe). Kombiniert schlaegt der Org-Lookup fehl ("unable to determine
+# organization email" / "invalid character '<'"). Security: Passwort verdeckt
+# einlesen und NIE im Klartext ausgeben.
+
+# Aktuelle Login-E-Mail ermitteln (nur E-Mail, Passwort NICHT anzeigen).
+current_email="$(abctl local credentials 2>/dev/null | sed -nE 's/.*Email:[[:space:]]*([^[:space:]]+@[^[:space:]]+).*/\1/p' | head -n1)" || true
+echo "  Aktuelle Login-E-Mail: ${current_email:-(noch nicht gesetzt)}"
+
+# 1) E-Mail (Login-Name) setzen
+email=""
+if [ -z "$current_email" ]; then
+  printf "  Login-E-Mail setzen [admin@example.com]: "; read -r email || email=""
+  [ -z "$email" ] && email="admin@example.com"
+else
+  printf "  Login-E-Mail aendern? (j/N) "; read -r chg || chg=""
+  case "$chg" in j|J|y|Y) printf "  Neue Login-E-Mail: "; read -r email || email="" ;; esac
+fi
+if [ -n "$email" ]; then
+  if abctl local credentials --email "$email" >/dev/null 2>&1; then
+    ok "Login-E-Mail gesetzt: $email"; current_email="$email"
+  else
+    warn "E-Mail konnte nicht gesetzt werden. Manuell: abctl local credentials --email <email>"
+  fi
+fi
+
+# 2) Passwort setzen - verdeckt (read -rs), SEPARATER Aufruf NACH der E-Mail
+printf "  Eigenes Passwort setzen? (j/N) "; read -r setpw || setpw=""
+case "$setpw" in
+  j|J|y|Y)
+    printf "  Neues Passwort: "; read -rs newpass || newpass=""; echo
+    if [ -n "$newpass" ]; then
+      if abctl local credentials --password "$newpass" >/dev/null 2>&1; then
+        ok "Passwort gesetzt."
+      else
+        warn "Passwort konnte nicht gesetzt werden. Manuell: abctl local credentials --password <pw>"
+      fi
+      unset newpass
+    else
+      warn "Leeres Passwort - keine Aenderung vorgenommen."
+    fi
+    ;;
+  *) warn "Generiertes Passwort beibehalten." ;;
+esac
+
 echo
-echo  "  Eigenes/gemeinsames Passwort setzen: abctl local credentials --email <email> --password <pw>"
+echo  "  Login-E-Mail: ${current_email:-(siehe \"abctl local credentials\")}"
+echo  "  Passwort: aus Security-Gruenden nicht angezeigt. Bei Bedarf: abctl local credentials"
 
 cat <<'EOF'
 

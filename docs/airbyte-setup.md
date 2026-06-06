@@ -104,15 +104,22 @@ Client-ID:     ...
 Client-Secret: ...
 ```
 
-### Passwort aendern
+### E-Mail & Passwort setzen (in DIESER Reihenfolge, zwei Aufrufe)
 
 ```powershell
-abctl local credentials --email login@example.com --password MeinNeuesPasswort123
+# 1) zuerst die Login-E-Mail setzen (= Login-Name in der UI)
+abctl local credentials --email login@example.com
+# 2) DANACH das Passwort setzen
+abctl local credentials --password MeinNeuesPasswort123
 ```
 
-> Die E-Mail ist der Login-Name in der UI und muss mitangegeben werden. Fehlt sie
-> (Ausgabe `Email: [not set]`), bricht der reine `--password`-Aufruf mit
-> `unable to determine organization email` ab.
+> **Warum getrennt?** Mit abctl 0.30.x + Airbyte-Chart 2.1.0 schlaegt der **kombinierte**
+> Aufruf `--email … --password …` fehl: abctl macht dabei einen Organisations-Lookup,
+> der HTML statt JSON zurueckliefert →
+> `unable to determine organization email: … invalid character '<'`.
+> Getrennt (erst `--email`, dann `--password`) funktioniert es zuverlaessig. Ist die
+> E-Mail bereits gesetzt, genuegt Schritt 2. Das Setup-Skript macht beides automatisch.
+> (`abctl local credentials` zeigt das Passwort im Klartext — daher nur bei Bedarf nutzen.)
 
 ---
 
