@@ -6,7 +6,9 @@
 |---|---|
 | Modul | INF-M Modul Projekte SoSe '26 |
 | Gruppe | Airbyte |
-| Bearbeiter | Bräutigam Rebecca <rbraeuti@stud.hs-offenburg.de> Horst Isabella <ihorst@stud.hs-offenburg.de> Lahres Timo <tlahres@stud.hs-offenburg.de>|
+| Bearbeiter | Bräutigam Rebecca <rbraeuti@stud.hs-offenburg.de> 
+Horst Isabella <ihorst@stud.hs-offenburg.de> 
+Lahres Timo <tlahres@stud.hs-offenburg.de>|
 | Stand | 06.06.2026 |
 | Abgabe | 07.06.2026 (Zwischenbericht + Doku) |
 
