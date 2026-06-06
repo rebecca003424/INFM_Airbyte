@@ -324,15 +324,41 @@ Alle CSV-Sources verwenden **Storage Provider: `local: Local Filesystem (limited
 
 > **Wie kommt `/local` in den Cluster? (abctl-spezifisch)**
 > Mit abctl laeuft Airbyte in Kubernetes/kind - das Docker-Volume `oss_local_root` reicht
-> hier NICHT, die Connector-Pods sehen es nicht. `setup-airbyte.ps1` loest das in zwei
+> hier NICHT, die Connector-Pods sehen es nicht. `setup-airbyte.ps1` loest das in **drei**
 > Schritten (bei manueller Installation selbst ausfuehren):
 > 1. **Mount beim Install:** `sql/source/data` wird als `/local` in den kind-Node gehaengt:
 >    `abctl local install --volume "/c/<repo>/sql/source/data:/local"`
 >    Windows-Pfade in MSYS-Form `/c/...` angeben - abctl trennt den `--volume`-String stur
 >    an `:`, sodass `C:\...` zu `is not a valid volume spec` fuehrt.
-> 2. **Volume fuer Connector-Pods aktivieren:** danach
->    `JOB_KUBE_LOCAL_VOLUME_ENABLED=true` setzen und launcher/worker neu starten (sonst
->    haengt der launcher `/local` nicht in die Job-Pods ein):
+> 2. **PVC `airbyte-local-pvc` anlegen (kritisch!):** Bei aktiviertem lokalem Volume haengt
+>    der workload-launcher dieses PVC in **JEDEN** Connector-Job-Pod. Fehlt es, bleiben
+>    **alle** Connector-Pods `Pending` (`persistentvolumeclaim "airbyte-local-pvc" not found`)
+>    - also auch Postgres/MySQL! abctl legt es nicht an. Ein PV (hostPath `/local`) + PVC:
+>    ```bash
+>    cat <<'EOF' | docker exec -i airbyte-abctl-control-plane kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+>    apiVersion: v1
+>    kind: PersistentVolume
+>    metadata: { name: airbyte-csv-local-pv }
+>    spec:
+>      capacity: { storage: 5Gi }
+>      accessModes: [ReadWriteMany]
+>      hostPath: { path: /local }
+>      persistentVolumeReclaimPolicy: Retain
+>      storageClassName: airbyte-local-manual
+>      claimRef: { name: airbyte-local-pvc, namespace: airbyte-abctl }
+>    ---
+>    apiVersion: v1
+>    kind: PersistentVolumeClaim
+>    metadata: { name: airbyte-local-pvc, namespace: airbyte-abctl }
+>    spec:
+>      accessModes: [ReadWriteMany]
+>      resources: { requests: { storage: 5Gi } }
+>      storageClassName: airbyte-local-manual
+>      volumeName: airbyte-csv-local-pv
+>    EOF
+>    ```
+> 3. **Volume aktivieren:** `JOB_KUBE_LOCAL_VOLUME_ENABLED=true` setzen und launcher/worker
+>    neu starten (sonst haengt der launcher `/local` nicht in die Job-Pods ein):
 >    ```bash
 >    docker exec airbyte-abctl-control-plane kubectl --kubeconfig /etc/kubernetes/admin.conf \
 >      patch configmap airbyte-abctl-airbyte-env -n airbyte-abctl --type merge \
@@ -351,8 +377,9 @@ Alle CSV-Sources verwenden **Storage Provider: `local: Local Filesystem (limited
 >   mit `/local/` beginnen: <https://docs.airbyte.com/integrations/sources/file>
 > - `abctl local install --volume <HOST_PATH>:<GUEST_PATH>` (mehrfach setzbar):
 >   <https://docs.airbyte.com/platform/deploying-airbyte/abctl>
-> - Der zweite Schritt (`JOB_KUBE_LOCAL_VOLUME_ENABLED=true` + Neustart) ist in der
->   offiziellen abctl-Doku **nicht** beschrieben und auf diesem Setup empirisch ermittelt.
+> - Schritt 2+3 (PVC `airbyte-local-pvc` + `JOB_KUBE_LOCAL_VOLUME_ENABLED=true` + Neustart)
+>   sind in der offiziellen abctl-Doku **nicht** beschrieben und auf diesem Setup empirisch
+>   ermittelt - ohne das PVC bleiben **alle** Connector-Pods `Pending`.
 
 ---
 

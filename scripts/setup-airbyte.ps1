@@ -191,24 +191,68 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Ok "Airbyte erfolgreich installiert."
 
-# --- 5b. File-Connector: lokalen /local-Mount aktivieren ---------------------
-# Der --volume-Mount bringt die CSVs in den kind-Node. Damit die dynamisch
-# gestarteten Connector-Pods sie auch sehen, muss JOB_KUBE_LOCAL_VOLUME_ENABLED=true
-# sein. abctl setzt das nicht automatisch -> hier per kubectl im kind-Node patchen
-# und launcher/worker neu starten (sonst greift die Aenderung nicht).
+# --- 5b. File-Connector: lokales /local-Volume bereitstellen -----------------
+# Drei Dinge sind noetig, damit der File-Connector (Provider 'local') unter abctl
+# funktioniert - und damit ueberhaupt IRGENDEIN Connector laeuft:
+#   1. --volume-Mount (oben): bringt die CSVs als /local in den kind-Node.
+#   2. PVC 'airbyte-local-pvc': Bei aktiviertem lokalem Volume haengt der workload-
+#      launcher dieses PVC in JEDEN Connector-Job-Pod. Fehlt es, bleiben ALLE
+#      Connector-Pods 'Pending' (persistentvolumeclaim "airbyte-local-pvc" not found)
+#      -> auch Postgres/MySQL-Connectoren starten dann nicht! abctl legt das PVC nicht
+#      automatisch an, daher hier ein PV (hostPath /local) + PVC.
+#   3. JOB_KUBE_LOCAL_VOLUME_ENABLED=true + Neustart von launcher/worker.
 
 if (Test-Path $DATA_DIR) {
-    Write-Step "File-Connector: lokalen /local-Mount aktivieren"
+    Write-Step "File-Connector: lokales /local-Volume bereitstellen"
+
+    # PV (hostPath auf den /local-Mount) + PVC 'airbyte-local-pvc' anlegen
+    $pvcYaml = @"
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: airbyte-csv-local-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes: [ReadWriteMany]
+  hostPath:
+    path: /local
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: airbyte-local-manual
+  claimRef:
+    name: airbyte-local-pvc
+    namespace: $ABCTL_NS
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airbyte-local-pvc
+  namespace: $ABCTL_NS
+spec:
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: airbyte-local-manual
+  volumeName: airbyte-csv-local-pv
+"@
+    $pvcYaml | docker exec -i $KIND_NODE kubectl --kubeconfig $KUBE_CFG apply -f - 2>&1 | Out-Null
+    $pvcOk = ($LASTEXITCODE -eq 0)
+
+    # lokales Volume fuer die Connector-Pods aktivieren
     $patch = '{"data":{"JOB_KUBE_LOCAL_VOLUME_ENABLED":"true"}}'
     docker exec $KIND_NODE kubectl --kubeconfig $KUBE_CFG patch configmap airbyte-abctl-airbyte-env -n $ABCTL_NS --type merge -p $patch 2>&1 | Out-Null
-    if ($LASTEXITCODE -eq 0) {
+    $flagOk = ($LASTEXITCODE -eq 0)
+
+    if ($pvcOk -and $flagOk) {
+        # launcher/worker neu starten, damit sie das Flag einlesen
         docker exec $KIND_NODE kubectl --kubeconfig $KUBE_CFG rollout restart deploy/airbyte-abctl-workload-launcher deploy/airbyte-abctl-worker -n $ABCTL_NS 2>&1 | Out-Null
         docker exec $KIND_NODE kubectl --kubeconfig $KUBE_CFG rollout status deploy/airbyte-abctl-workload-launcher -n $ABCTL_NS --timeout=120s 2>&1 | Out-Null
         Write-Ok "Lokaler File-Connector-Mount aktiv (Provider 'local', URL /local/<datei>.csv)."
     } else {
-        Write-Warn "JOB_KUBE_LOCAL_VOLUME_ENABLED konnte nicht gesetzt werden."
-        Write-Host "         Manuell im kind-Node nachholen:" -ForegroundColor Gray
-        Write-Host "         docker exec $KIND_NODE kubectl --kubeconfig $KUBE_CFG patch configmap airbyte-abctl-airbyte-env -n $ABCTL_NS --type merge -p '$patch'" -ForegroundColor Gray
+        Write-Warn "Lokales File-Connector-Volume nicht vollstaendig eingerichtet (PVC ok: $pvcOk, Flag ok: $flagOk)."
+        Write-Host "         ACHTUNG: Mit gesetztem Flag, aber ohne PVC 'airbyte-local-pvc' bleiben" -ForegroundColor Gray
+        Write-Host "         ALLE Connector-Pods 'Pending'. Im Zweifel Flag wieder auf false setzen." -ForegroundColor Gray
     }
 }
 
