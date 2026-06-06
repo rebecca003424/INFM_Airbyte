@@ -2,6 +2,13 @@
 
 Ziel: Evaluierung von Airbyte als ETL-Tool für die Hochschul-IT (Ersatz für Talend).
 
+> **Umsetzungsstand (live verifiziert, Stand 06.06.2026):**
+> - **Szenario 1 ✅** vollständig: PG→PG **und** PG→MySQL (je fm_gebaeude 25 / k_plz 34.172),
+>   File→PG `hso_students` **5.052 Zeilen** (defekte CSV, an der `COPY` scheiterte).
+> - **Szenario 6a ✅** PostgREST liefert REST auf `destdb` (`GET localhost:3000/k_plz`).
+> - **Szenario 2/3/4/5 ◑/○** – Stand & Blocker je Szenario unten bzw. in
+>   [anforderungen.md](anforderungen.md).
+
 ---
 
 ## Übersicht der Testdaten

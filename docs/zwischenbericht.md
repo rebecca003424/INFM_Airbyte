@@ -63,17 +63,24 @@ In Airbyte sind angelegt und per Verbindungstest grün:
 - **Destinations (2):** `HSO Dest PostgreSQL` (Port 5434), `HSO Dest MySQL` (Port 3306,
   SSL aus, `allowPublicKeyRetrieval=true`, Raw-DB `destdb`).
 
-Der **erste ETL-Prozess** (Connection `HSO Source PostgreSQL → HSO Dest PostgreSQL`,
-Streams `fm_gebaeude` + `k_plz`, Modus *Full Refresh | Overwrite*) wurde erfolgreich
-ausgeführt. Verifikation in der Ziel-DB:
+Es wurden **drei Connections** (jeweils *Full Refresh | Overwrite*) ausgeführt und das
+Ergebnis **unabhängig in der jeweiligen Ziel-DB** geprüft:
 
-| Stream | Zeilen Source | Zeilen Ziel (`destdb`) |
-|---|---:|---:|
-| `fm_gebaeude` | 25 | **25** |
-| `k_plz` | 34.172 | **34.172** |
+| Connection | Streams | Ergebnis (Ziel-DB) |
+|---|---|---|
+| `HSO Source PostgreSQL → HSO Dest PostgreSQL` | `fm_gebaeude`, `k_plz` | 25 / 34.172 ✅ |
+| `HSO Source PostgreSQL → HSO Dest MySQL` | `fm_gebaeude`, `k_plz` | 25 / 34.172 ✅ |
+| `HSO CSV hso_students → HSO Dest PostgreSQL` | `hso_students` (File) | **5.052 Zeilen** ✅ |
 
-Damit sind sowohl der **DB-Connector** als auch der **File-Connector** (Szenario 1)
-nachweislich lauffähig.
+Bemerkenswert: Der **File-Connector lud die defekte `hso_students.csv` vollständig
+(5.052 Zeilen)** in die DB — dieselbe Datei, an der ein direktes PostgreSQL-`COPY`
+scheiterte (0 Zeilen, Kap. 5.2). Pandas im File-Connector toleriert die Spalten-
+Inkonsistenzen. Damit sind **DB-Connector** (PG→PG, PG→MySQL) **und File-Connector**
+(CSV→DB) — also der Kern von Szenario 1 inkl. „PostgreSQL→MySQL dumpen" — nachgewiesen.
+
+Zusätzlich stellt der Dienst **PostgREST** (`hso_postgrest`, Szenario 6a) eine REST-API
+auf die Ziel-DB bereit: `GET http://localhost:3000/k_plz?limit=5` liefert die
+synchronisierten Daten als JSON.
 
 ---
 
