@@ -54,7 +54,7 @@ Account-Mapping) wird Python aber empfohlen.
 Terminal öffnen — **Windows:** PowerShell (Win+X → "Terminal"), **Linux/macOS:** Terminal:
 
 ```bash
-git clone <https://github.com/Timbo3399/INFM_Airbyte.git>
+git clone https://github.com/Timbo3399/INFM_Airbyte.git
 cd INFM_Airbyte
 ```
 
